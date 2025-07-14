@@ -5,6 +5,7 @@ return {
     priority = 1000,
     config = function()
       vim.g.sonokai_enable_italic = true
+      vim.g.sonokai_style = 'maia'
       vim.g.sonokai_transparent_background = 2
 
       -- setup must be called before loading

@@ -1,5 +1,6 @@
 set $mod Mod4
-font pango:Inter Nerd Font, FontAwesome 11
+# font pango:Inter Nerd Font, FontAwesome 11
+font pango:JetbrainsMono Nerd Font, FontAwesome 11
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
@@ -29,6 +30,9 @@ tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec kitty
+
+# start browser
+bindsym $mod+Shift+Return exec librewolf
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -69,16 +73,16 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-set $ws1 "1" 
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 " 1 " 
+set $ws2 " 2 "
+set $ws3 " 3 "
+set $ws4 " 4 "
+set $ws5 " 5 "
+set $ws6 " 6 "
+set $ws7 " 7 "
+set $ws8 " 8 "
+set $ws9 " 9 "
+set $ws10 " 10 "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -137,10 +141,10 @@ exec_always chmod +x ~/.config/i3/auto-display.sh
 exec_always --no-startup-id ~/.config/i3/auto-display.sh
 
 # wallpaper
-exec_always sh -c "sleep 0.5 && feh --bg-fill /home/prozod/walls/greenaddict.png"
+exec_always sh -c "sleep 0.25 && feh --bg-fill /home/prozod/walls/wall.png"
 
 # polybar 
-exec_always --no-startup-id sh -c "sleep 1.0 && ~/.config/polybar/launch.sh"
+exec_always --no-startup-id sh -c "sleep 0.5 && ~/.config/polybar/launch.sh"
 
 # Screenshot region PrntScr
 bindsym Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
@@ -166,27 +170,28 @@ set $mono1        #2e2e2e
 set $mono2        #444444
 set $mono3        #999999
 
-# Optional warning yellow
+# Accent colors
 set $warning      #ffd700
+set $lime         #bfff00
 
-# Classy minimalist borders
-client.focused          $mono3     $bg  $fg     $mono3        $mono3
+# Classy minimalist borders with neon lime accent
+client.focused          $lime      $bg  $fg     $lime      $lime
 client.focused_inactive $mono1     $bg  $mono3  $mono1     $mono1
 client.unfocused        $mono0     $bg  $separator $mono0  $mono0
-client.urgent           $alert     $bg  $fg     $alert     $alert
+client.urgent           $lime      $bg  $fg     $lime      $lime
 client.placeholder      $bg        $bg  $fg     $bg        $bg
 client.background       $bg
 
 # borders and gaps
-# smart_borders on
-smart_gaps off
-gaps inner 8
-gaps outer 6
+smart_borders on
+smart_gaps on
+gaps inner 6
+gaps outer 3
 
 # remove i3 borders
 default_border pixel 0
 default_floating_border pixel 0
-for_window [class="^.*"] border pixel 0
+for_window [class=".*"] border pixel 1
 
 # enable touchpad
 exec --no-startup-id xinput set-prop "SYNA2BA6:00 06CB:CEFE Touchpad" "libinput Tapping Enabled" 1
@@ -197,10 +202,10 @@ exec setxkbmap -option ctrl:nocaps
 
 # cachyOS defaults
 exec --no-startup-id dunst
-exec --no-startup-id picom
+# exec --no-startup-id picom --experimental-backends
 exec --no-startup-id redshift
 exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-
 exec_always mkfifo /tmp/xobpipe && tail -f /tmp/xobpipe | xob -t 2170 & disown
+

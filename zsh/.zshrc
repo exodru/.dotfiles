@@ -1,8 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-export LC_ALL=en_IN.UTF-8
-export LANG=en_IN.UTF-8
 export EDITOR=nvim
 export VISUAL=nvim
 export TERM="xterm-256color"
@@ -40,7 +38,7 @@ alias repos='cd ~/repos'
 alias x='exit'
 alias lg='lazygit'
 alias ra='ranger'
-alias pc='nv ~/.config/picom.conf'
+alias pc='nv ~/.config/picom/picom.conf'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

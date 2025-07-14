@@ -1,7 +1,7 @@
 # dotfiles
 
 These are my personal dotfiles, managed with GNU Stow.  
-I'm typically running Ubuntu (currently 24.04) with the i3 window manager.
+I'm typically running CachyOS (based on Arch Linux) with the i3 window manager.
 
 ## Structure
 * **fonts**: Custom fonts (NerdFonts).
@@ -14,16 +14,16 @@ I'm typically running Ubuntu (currently 24.04) with the i3 window manager.
 * **tmux**: Tmux terminal multiplexer configuration.
 * **walls**: Wallpapers that I use and like.
 * **zsh**: Zsh shell configuration.
+* **dunst**: Notifications
 * **setup.sh**: A script for initial setup (dependencies and whatever, etc.)
 
 ## How I'm using these
 ### Prerequisites
-* **Ubuntu 24.04**: Since I'm a Ubuntu user, the dotfiles are specifically tested and configured for this.
+* **CachyOS (or any Arch based distro with X11)** - I haven't tested it on any other distros.
 * **i3 Window Manager**: The i3 configuration assumes you have i3 installed.
 * **GNU Stow**: Essential for managing the symlinks. If you don't have it, install it:
     ```bash
-    sudo apt update
-    sudo apt install stow
+    sudo pacman -S stow
     ```
 
 ### Cloning the Repository
