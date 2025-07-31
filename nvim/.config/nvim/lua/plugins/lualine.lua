@@ -43,13 +43,13 @@ end
 local colors = {
   bg     = "#161821",
   fg     = "#d0d3d4",
-  yellow = "#f4d03f",
-  red    = "#e74c3c",
-  green  = "#2ecc71",
-  blue   = "#3498db",
+  yellow = "#f9e2af",
+  red    = "#f38ba8",
+  green  = "#a6e3a1",
+  blue   = "#89b4fa",
   gray   = "#545c7e",
-  purple = "#3498db",
-  orange = "#e67e22",
+  purple = "#cba6f7",
+  orange = "#fab387",
 }
 
 local custom_theme = {

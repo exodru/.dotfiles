@@ -19,6 +19,14 @@ return {
           text({ '\t', '};' }) })
     }
 
+    local go_snips = {
+      snip({ trig = "ife", dscr = "basic if err != nil {} boiler" },
+        { text({ 'if err != nil { fmt.Printf("' }), insert(1), text({ ' ")}' }) }),
+      snip('fn', {
+        text({ 'func ' }), insert(1), text({ '() {' }), insert(2), text({ '};' })
+      })
+    }
+
     local tex = {
       -- text formatting
       snip({ trig = "bf", dscr = "Create bold text" },
@@ -119,11 +127,7 @@ return {
           func(date, {}),
         }),
       },
-      go = {
-        snip('fn', {
-          text({ 'func ' }), insert(1), text({ '() {' }), insert(2), text({ '};' })
-        })
-      },
+      go = go_snips,
       javascript = js_ts_snips,
       typescript = js_ts_snips,
       tex = tex,

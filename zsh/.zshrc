@@ -38,6 +38,7 @@ alias repos='cd ~/repos'
 alias x='exit'
 alias lg='lazygit'
 alias ra='ranger'
+alias gd='go doc --src '
 alias pc='nv ~/.config/picom/picom.conf'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
