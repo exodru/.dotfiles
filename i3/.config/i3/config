@@ -1,5 +1,6 @@
 set $mod Mod4
-font pango:Inter Nerd Font, FontAwesome 11
+# font pango:Inter Nerd Font, FontAwesome 11
+font pango:Terminus Nerd Font Mono 10
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
@@ -140,7 +141,7 @@ exec_always chmod +x ~/.config/i3/auto-display.sh
 exec_always --no-startup-id ~/.config/i3/auto-display.sh
 
 # wallpaper
-exec_always sh -c "sleep 0.25 && feh --bg-fill /home/prozod/walls/beyes.png"
+exec_always sh -c "sleep 0.25 && feh --bg-fill /home/prozod/walls/wall.png"
 
 # polybar 
 exec_always --no-startup-id sh -c "sleep 0.5 && ~/.config/polybar/launch.sh"
@@ -171,7 +172,7 @@ set $mono3        #999999
 
 # Accent colors
 set $warning      #ffd700
-set $lime         #cba6f7
+set $lime         #00f6fa
 
 # Classy minimalist borders with neon lime accent
 client.focused          $lime      $bg  $fg     $lime      $lime
@@ -183,9 +184,9 @@ client.background       $bg
 
 # borders and gaps
 smart_borders on
-smart_gaps on
-gaps inner 6
-gaps outer 3
+smart_gaps off
+# gaps inner 10
+# gaps outer 5
 
 # remove i3 borders
 default_border pixel 0
@@ -196,8 +197,8 @@ for_window [class=".*"] border pixel 1
 exec --no-startup-id xinput set-prop "SYNA2BA6:00 06CB:CEFE Touchpad" "libinput Tapping Enabled" 1
 
 # keep pressing speed and remaps
-exec xset r rate 240 60
-exec setxkbmap -option ctrl:nocaps
+exec_always --no-startup-id xset r rate 240 60
+exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 # cachyOS defaults
 exec --no-startup-id dunst

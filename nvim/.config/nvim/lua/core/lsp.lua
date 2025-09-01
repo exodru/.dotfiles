@@ -8,7 +8,8 @@ vim.lsp.enable({
   "html",
   "clangd",
   "sql-ls",
-  "latex"
+  "latex",
+  "proto"
 })
 
 vim.diagnostic.config({

@@ -8,7 +8,8 @@ export TERM="xterm-256color"
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
+ZSH_THEME="jreese"
 
 plugins=(
 	git
@@ -60,3 +61,12 @@ export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/$USER/
 echo ">>> .zshrc loaded <<<"
 
 export PATH="$HOME/.local/share/nvim/mason/packages/codelldb/extension/adapter:$PATH"
+
+# YAZI SHELL WRAPPER
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}

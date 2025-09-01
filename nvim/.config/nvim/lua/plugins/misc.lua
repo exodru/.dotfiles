@@ -1,21 +1,21 @@
 -- Various small plugins that dont have a huge impact but improves my personal DX.
 return {
   { "windwp/nvim-ts-autotag" },
-  {
-    'github/copilot.vim',
-    init = function()
-      vim.g.copilot_no_tab_map = true
-      vim.g.copilot_assume_mapped = true
-    end,
-    config = function()
-      vim.keymap.set('i', '<C-e>', [[copilot#Accept("\<CR>")]], {
-        silent = true,
-        expr = true,
-        script = true,
-        replace_keycodes = false,
-      })
-    end,
-  },
+  -- {
+  --   'github/copilot.vim',
+  --   init = function()
+  --     vim.g.copilot_no_tab_map = true
+  --     vim.g.copilot_assume_mapped = true
+  --   end,
+  --   config = function()
+  --     vim.keymap.set('i', '<C-e>', [[copilot#Accept("\<CR>")]], {
+  --       silent = true,
+  --       expr = true,
+  --       script = true,
+  --       replace_keycodes = false,
+  --     })
+  --   end,
+  -- },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -52,5 +52,12 @@ return {
     config = function()
       require("ibl").setup({})
     end,
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
   }
 }

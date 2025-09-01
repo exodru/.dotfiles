@@ -1,6 +1,10 @@
 local opts = { noremap = true, silent = true }
 
 -- Preferential adjusments of default keybinds:
+vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
+vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
+vim.keymap.set("n", "+", [[<cmd>horizontal resize +3<cr>]]) -- make the window bigger horizontally by pressing shift and =
+vim.keymap.set("n", "_", [[<cmd>horizontal resize -3<cr>]]) -- make the window smaller horizontally by pressing shift and -
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 vim.keymap.set({ 'n', "i" }, '<leader>bd', '<Esc>:bd<CR>', opts)
 vim.keymap.set({ "n", "i", "v" }, '<C-s>', '<Esc>:w<CR>', opts)
