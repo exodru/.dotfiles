@@ -141,7 +141,7 @@ exec_always chmod +x ~/.config/i3/auto-display.sh
 exec_always --no-startup-id ~/.config/i3/auto-display.sh
 
 # wallpaper
-exec_always sh -c "sleep 0.25 && feh --bg-fill /home/prozod/walls/wall.png"
+exec_always sh -c "sleep 0.25 && feh --bg-fill /home/prozod/walls/1827josephvaley.jpg"
 
 # polybar 
 exec_always --no-startup-id sh -c "sleep 0.5 && ~/.config/polybar/launch.sh"
@@ -172,7 +172,7 @@ set $mono3        #999999
 
 # Accent colors
 set $warning      #ffd700
-set $lime         #00f6fa
+set $lime         #81FF3D
 
 # Classy minimalist borders with neon lime accent
 client.focused          $lime      $bg  $fg     $lime      $lime
@@ -191,7 +191,7 @@ smart_gaps off
 # remove i3 borders
 default_border pixel 0
 default_floating_border pixel 0
-for_window [class=".*"] border pixel 1
+for_window [class=".*"] border pixel 2
 
 # enable touchpad
 exec --no-startup-id xinput set-prop "SYNA2BA6:00 06CB:CEFE Touchpad" "libinput Tapping Enabled" 1
