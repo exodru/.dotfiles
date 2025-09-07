@@ -9,7 +9,8 @@ export TERM="xterm-256color"
 export ZSH="$HOME/.oh-my-zsh"
 
 # ZSH_THEME="agnoster"
-ZSH_THEME="jreese"
+# ZSH_THEME="jreese"
+ZSH_THEME="half-life"
 
 plugins=(
 	git
