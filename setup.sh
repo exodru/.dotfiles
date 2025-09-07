@@ -19,7 +19,11 @@ sudo apt install -y \
     curl \
     wget \
     maim \
-    brightnessctl
+    brightnessctl \
+    pamixer \
+    bluetooth \
+    bluemoon \
+    flatpak
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 

@@ -5,7 +5,7 @@
     # Display notifications on monitor with mouse focus
     follow = mouse
     # Set {width}x{height} and {x_pos}+{y_pos}
-    geometry = "300x60-25+60"
+    geometry = "350x80-25+60"
     # Show number of hidden notifications
     indicate_hidden = yes
     # Shrink window if smaller than width
@@ -17,13 +17,13 @@
     # Height of seperators
     separator_height = 2
     # Text and seperator padding
-    padding = 8
+    padding = 14
     # Horizontal padding
-    horizontal_padding = 8
+    horizontal_padding = 16
     # Width of frame around window
     frame_width = 1
     # Color of frame around window
-    frame_color = "#81FF3D"
+    frame_color = "#ffd700"
     # Sort messages by urgency
     sort = yes
     # Idle seconds
@@ -32,7 +32,7 @@
     ### Text ###
     
     # Set font of notifications
-    font = Inter Nerd Font 10
+    font = Ubuntu Nerd Font 10
     # Spacing between lines 
     line-height = 0
     # Markup parsing
@@ -68,8 +68,10 @@
    
     ### Icons ###
     
-    # Disable icons
-    icon_position = off
+    min_icon_size = 55
+    max_icon_size = 90
+    icon_position = left
+    icon_path = /home/prozod/.local/share/icons/kora-yellow/apps/scalable:/home/prozod/.icons
 
     ### History ###
     
@@ -116,7 +118,7 @@
 [urgency_normal]
 
     # Normal urgency notifications
-    background = "#101111"
+    background = "#0e0e0e"
     foreground = "#ffffff"
     timeout = 5
 
