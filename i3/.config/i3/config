@@ -149,10 +149,10 @@ exec_always --no-startup-id sh -c "sleep 0.5 && ~/.config/polybar/launch.sh"
 # Screenshot region PrntScr
 bindsym Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 # rofi-wifi
-bindsym $mod+n exec --no-startup-id ~/.config/rofi/rofi_wifi_menu.sh
+# bindsym $mod+n exec --no-startup-id ~/.config/rofi/rofi_wifi_menu.sh
 
 # rofi-bluetooth
-bindsym $mod+b exec --no-startup-id ~/.config/rofi/rofi_bluetooth_menu.sh
+# bindsym $mod+b exec --no-startup-id ~/.config/rofi/rofi_bluetooth_menu.sh
 
 # i3lock the screen
 bindsym $mod+Shift+x exec i3lock

@@ -14,9 +14,12 @@ ZSH_THEME="half-life"
 
 plugins=(
 	git
-  z
+  	z
 	zsh-autosuggestions
+	zsh-syntax-highlighting
+	fast-syntax-highlighting
 )
+
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
