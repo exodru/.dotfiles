@@ -18,11 +18,11 @@ plugins=(
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	fast-syntax-highlighting
+	zsh-autocomplete
 )
 
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -42,7 +42,7 @@ alias i3wm='nvim ~/.config/i3'
 alias repos='cd ~/repos'
 alias x='exit'
 alias lg='lazygit'
-alias ra='ranger'
+alias dots='cd ~/.dotfiles'
 alias gd='go doc --src '
 alias pc='nv ~/.config/picom/picom.conf'
 
@@ -74,3 +74,6 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+# for rust
+. "$HOME"/.cargo/env

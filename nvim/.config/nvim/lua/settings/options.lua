@@ -74,7 +74,7 @@ set.guicursor =
 vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
 
 -- theme/color
-vim.cmd([[colorscheme lunaperche]])
+vim.cmd([[colorscheme wildcharm]])
 vim.cmd([[ highlight TelescopeBorder guibg=none ]])
 vim.cmd([[ highlight TelescopeTitle guibg=none ]])
 vim.cmd("hi Normal guibg=none ctermbg=none")

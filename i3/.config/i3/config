@@ -1,5 +1,5 @@
 set $mod Mod4
-font pango:Ubuntu Nerd Font, FontAwesome 11
+font pango:AdwaitaMono Nerd Font, FontAwesome 11
 # font pango:JetBrainsMono Nerd Font, FontAwesome 10
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -7,15 +7,15 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym XF86AudioRaiseVolume exec "pamixer -ui 3 && pamixer --get-volume > /tmp/xobpipe"
-bindsym XF86AudioLowerVolume exec "pamixer -ud 3 && pamixer --get-volume > /tmp/xobpipe"
+# bindsym XF86AudioRaiseVolume exec "pamixer -ui 3 && pamixer --get-volume > /tmp/xobpipe"
+# bindsym XF86AudioLowerVolume exec "pamixer -ud 3 && pamixer --get-volume > /tmp/xobpipe"
 # mute sound
-bindsym XF86AudioMute exec "amixer sset Master toggle | sed -En '/\[on\]/ s/.*\[([0-9]+)%\].*/\1/ p; /\[off\]/ s/.*/0/p' | head -1 > /tmp/xobpipe"
+# bindsym XF86AudioMute exec "amixer sset Master toggle | sed -En '/\[on\]/ s/.*\[([0-9]+)%\].*/\1/ p; /\[off\]/ s/.*/0/p' | head -1 > /tmp/xobpipe"
 
 # adjust brightness as needed (e.g., 5% or 10%)
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +15%
@@ -141,7 +141,7 @@ exec_always chmod +x ~/.config/i3/auto-display.sh
 exec_always --no-startup-id ~/.config/i3/auto-display.sh
 
 # wallpaper
-exec_always sh -c "sleep 0.25 && feh --bg-fill /home/prozod/walls/mountain.png"
+exec_always sh -c "sleep 0.25 && feh --bg-fill /home/prozod/walls/dunes.jpg"
 
 # polybar 
 exec_always --no-startup-id sh -c "sleep 0.5 && ~/.config/polybar/launch.sh"
@@ -172,26 +172,26 @@ set $mono3        #999999
 
 # Accent colors
 set $warning      #ffd700
-set $lime         #ffd700
+set $powerful     #4169E1
 
-# Classy minimalist borders with neon lime accent
-client.focused          $lime      $bg  $fg     $lime      $lime
-client.focused_inactive $mono1     $bg  $mono3  $mono1     $mono1
-client.unfocused        $mono0     $bg  $separator $mono0  $mono0
-client.urgent           $lime      $bg  $fg     $lime      $lime
-client.placeholder      $bg        $bg  $fg     $bg        $bg
+# Classy minimalist borders with <powerful> accents
+client.focused          $powerful  $bg  $fg         $powerful   $powerful
+client.focused_inactive $mono1     $bg  $mono3      $mono1      $mono1
+client.unfocused        $mono0     $bg  $separator  $mono0      $mono0
+client.urgent           $powerful  $bg  $fg         $powerful   $powerful
+client.placeholder      $bg        $bg  $fg         $bg         $bg
 client.background       $bg
 
 # borders and gaps
-smart_borders on
-smart_gaps on
+# smart_borders on
+smart_gaps off
 gaps inner 8
 gaps outer 4
 
 # remove i3 borders
 default_border pixel 0
 default_floating_border pixel 0
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 1
 
 # enable touchpad
 exec --no-startup-id xinput set-prop "SYNA2BA6:00 06CB:CEFE Touchpad" "libinput Tapping Enabled" 1
@@ -200,12 +200,11 @@ exec --no-startup-id xinput set-prop "SYNA2BA6:00 06CB:CEFE Touchpad" "libinput 
 exec_always --no-startup-id xset r rate 240 60
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
-# cachyOS defaults
+# various
 exec --no-startup-id dunst
-# exec --no-startup-id picom --experimental-backends
 exec --no-startup-id redshift
-exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-exec_always mkfifo /tmp/xobpipe && tail -f /tmp/xobpipe | xob -t 2170 & disown
+exec --no-startup-id env GTK_THEME=Colloid-Dark nm-applet
+exec --no-startup-id thunar --daemon
 
+exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
