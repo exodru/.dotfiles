@@ -10,6 +10,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # ZSH_THEME="agnoster"
 # ZSH_THEME="jreese"
+# ZSH_THEME="awesomepanda"
 ZSH_THEME="half-life"
 
 plugins=(
@@ -45,6 +46,7 @@ alias lg='lazygit'
 alias dots='cd ~/.dotfiles'
 alias gd='go doc --src '
 alias pc='nv ~/.config/picom/picom.conf'
+alias ncspot='flatpak run io.github.hrkfdn.ncspot'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -77,3 +79,53 @@ function y() {
 
 # for rust
 . "$HOME"/.cargo/env
+
+. "$HOME/.local/bin/env"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+
+#venv for molten, venv wrapper
+# usage
+# $ mkvenv myvirtualenv # creates venv under ~/.virtualenvs/
+# $ venv myvirtualenv   # activates venv
+# $ deactivate          # deactivates venv
+# $ rmvenv myvirtualenv # removes venv
+
+export VENV_HOME="$HOME/.virtualenvs"
+[[ -d $VENV_HOME ]] || mkdir $VENV_HOME
+
+lsvenv() {
+  ls -1 $VENV_HOME
+}
+
+venv() {
+  if [ $# -eq 0 ]
+    then
+      echo "Please provide venv name"
+    else
+      source "$VENV_HOME/$1/bin/activate"
+  fi
+}
+
+mkvenv() {
+  if [ $# -eq 0 ]
+    then
+      echo "Please provide venv name"
+    else
+      python3 -m venv $VENV_HOME/$1
+  fi
+}
+
+rmvenv() {
+  if [ $# -eq 0 ]
+    then
+      echo "Please provide venv name"
+    else
+      rm -r $VENV_HOME/$1
+  fi
+}

@@ -1,5 +1,5 @@
 local mode_map = {
-  ["n"] = "NOR",
+  ["n"] = "NORMAL",
   ["no"] = "O·P",
   ["nov"] = "O·P",
   ["noV"] = "O·P",
@@ -17,7 +17,7 @@ local mode_map = {
   ["s"] = "S",
   ["S"] = "S·L",
   ["\19"] = "S·B",
-  ["i"] = "INS",
+  ["i"] = "INSERT",
   ["ic"] = "I·C",
   ["ix"] = "I·X",
   ["R"] = "R",
@@ -43,13 +43,13 @@ end
 local colors = {
   bg     = "#161821",
   fg     = "#d0d3d4",
-  yellow = "#f9e2af",
-  red    = "#f38ba8",
-  green  = "#a6e3a1",
-  blue   = "#89b4fa",
+  yellow = "#ede813",
+  red    = "#ed121c",
+  green  = "#01cd0f",
+  blue   = "#5484f5",
   gray   = "#545c7e",
-  purple = "#cba6f7",
-  orange = "#fab387",
+  purple = "#ae13ed",
+  orange = "#ed8c13",
 }
 
 local custom_theme = {
@@ -111,7 +111,8 @@ return {
       },
       sections = {
         lualine_a = {
-          { modes, color = { gui = "bold" }, separator = { right = "" }, right_padding = 2 },
+          { modes, color = { gui = "bold" }, separator = { right = "" }, right_padding = 2 },
+          -- { modes, color = { gui = "bold" }, separator = { right = "" }, right_padding = 2 },
         },
         lualine_b = {
           {
@@ -129,18 +130,21 @@ return {
             path = 1,
             file_status = true,
             color = { fg = colors.white, gui = "bold" },
-            separator = { right = "" },
+            -- separator = { right = "" },
+            separator = { right = "" },
             cond = conditions.not_empty,
           },
           {
             "branch",
             color = { fg = colors.flamingo, gui = "bold" },
-            separator = { right = "" },
+            -- separator = { right = "" },
+            separator = { right = "" },
           },
           {
             "diff",
             symbols = { added = " ", modified = "󰝤 ", removed = " " },
-            separator = { right = "", left = "" },
+            -- separator = { right = "", left = "" },
+            separator = { right = "", left = "" },
             diff_color = {
               added = { fg = colors.green },
               modified = { fg = colors.yellow },
@@ -174,7 +178,8 @@ return {
         lualine_z = {
           {
             "location",
-            separator = { left = "" },
+            -- separator = { left = "" },
+            separator = { left = "" },
             left_padding = 2,
             color = { gui = "bold", bg = colors.teal },
           },

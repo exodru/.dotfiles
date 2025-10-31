@@ -1,7 +1,7 @@
 # dotfiles
 
 These are my personal dotfiles, managed with GNU Stow.  
-I'm typically running CachyOS (based on Arch Linux) with the i3 window manager.
+I'm typically running Debian (currently on 13 Trixie) with the i3 window manager.
 
 ## Structure
 * **fonts**: Custom fonts (NerdFonts).
@@ -19,9 +19,9 @@ I'm typically running CachyOS (based on Arch Linux) with the i3 window manager.
 
 ## How I'm using these
 ### Prerequisites
-* **CachyOS (or any Arch based distro with X11)** - I haven't tested it on any other distros.
 * **i3 Window Manager**: The i3 configuration assumes you have i3 installed.
 * **GNU Stow**: Essential for managing the symlinks. If you don't have it, install it:
+* **Polybar, Rofi, Dunst**: For the status bar, app launcher and notifications
     ```bash
     sudo pacman -S stow
     ```
@@ -49,4 +49,10 @@ You can repeat this for each configuration you want to sync:
 **Alternatively, to sync all at once (careful with potential conflicts):**
 ```bash
 stow */ # this will attempt to stow all top-level directories
+```
+
+To undo certain configurations (if stow placed them wrong or idk)
+```bash
+cd ~/.dotfiles
+stow -D <directory name or whatever, ex: nvim>
 ```

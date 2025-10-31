@@ -1,6 +1,6 @@
 set $mod Mod4
 font pango:AdwaitaMono Nerd Font, FontAwesome 11
-# font pango:JetBrainsMono Nerd Font, FontAwesome 10
+# font pango:Terminess Nerd Font, FontAwesome 10
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
@@ -11,6 +11,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
 
 # bindsym XF86AudioRaiseVolume exec "pamixer -ui 3 && pamixer --get-volume > /tmp/xobpipe"
 # bindsym XF86AudioLowerVolume exec "pamixer -ud 3 && pamixer --get-volume > /tmp/xobpipe"
@@ -141,7 +142,7 @@ exec_always chmod +x ~/.config/i3/auto-display.sh
 exec_always --no-startup-id ~/.config/i3/auto-display.sh
 
 # wallpaper
-exec_always sh -c "sleep 0.25 && feh --bg-fill /home/prozod/walls/dunes.jpg"
+exec_always sh -c "sleep 0.25 && feh --bg-fill /home/prozod/walls/town_pixelated.jpg"
 
 # polybar 
 exec_always --no-startup-id sh -c "sleep 0.5 && ~/.config/polybar/launch.sh"
@@ -172,7 +173,7 @@ set $mono3        #999999
 
 # Accent colors
 set $warning      #ffd700
-set $powerful     #4169E1
+set $powerful     #ffffff
 
 # Classy minimalist borders with <powerful> accents
 client.focused          $powerful  $bg  $fg         $powerful   $powerful
@@ -183,10 +184,10 @@ client.placeholder      $bg        $bg  $fg         $bg         $bg
 client.background       $bg
 
 # borders and gaps
-# smart_borders on
-smart_gaps off
-gaps inner 8
-gaps outer 4
+smart_borders on
+# smart_gaps off
+# gaps inner 10
+# gaps outer 5
 
 # remove i3 borders
 default_border pixel 0
@@ -198,7 +199,7 @@ exec --no-startup-id xinput set-prop "SYNA2BA6:00 06CB:CEFE Touchpad" "libinput 
 
 # keep pressing speed and remaps
 exec_always --no-startup-id xset r rate 240 60
-exec_always --no-startup-id setxkbmap -option ctrl:nocaps
+exec_always --no-startup-id setxkbmap -layout "us,ro" -variant ",std" -option "grp:alt_shift_toggle,ctrl:nocaps"
 
 # various
 exec --no-startup-id dunst
@@ -208,3 +209,7 @@ exec --no-startup-id env GTK_THEME=Colloid-Dark nm-applet
 exec --no-startup-id thunar --daemon
 
 exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
+# force US/RO layouts with Alt+Shift toggle
+exec --no-startup-id ~/.config/i3/set-keyboard.sh
+

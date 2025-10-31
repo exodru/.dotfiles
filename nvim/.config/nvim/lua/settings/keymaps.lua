@@ -1,8 +1,8 @@
 local opts = { noremap = true, silent = true }
 
 -- Preferential adjusments of default keybinds:
-vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
-vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
+vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]])   -- make the window biger vertically
+vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]])   -- make the window smaller vertically
 vim.keymap.set("n", "+", [[<cmd>horizontal resize +3<cr>]]) -- make the window bigger horizontally by pressing shift and =
 vim.keymap.set("n", "_", [[<cmd>horizontal resize -3<cr>]]) -- make the window smaller horizontally by pressing shift and -
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
@@ -31,7 +31,7 @@ vim.keymap.set('n', '<leader>sg', telescope.live_grep, {})
 vim.keymap.set('n', '<leader>vr', telescope.registers, {})
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, {})
 vim.keymap.set('n', '<leader>fs', telescope.lsp_document_symbols, {})
-vim.keymap.set('n', '<leader>fb', telescope.buffers, {})
+vim.keymap.set('n', '<C-f>p', telescope.buffers, {})
 vim.keymap.set('n', '<leader>gs', telescope.git_stash, {})
 vim.keymap.set('n', '<leader>gb', telescope.git_branches, {})
 vim.keymap.set('n', '<leader>gc', telescope.git_commits, {})
@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', ':vsp<cr> :lua vim.lsp.buf.definition()<CR> zz', opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<leader>si', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', '<space>*', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
@@ -95,3 +95,22 @@ vim.keymap.set("n", "<leader>dsv", '<cmd>lua require"dap".step_over()<CR>', opts
 vim.keymap.set("n", "<leader>dsi", '<cmd>lua require"dap".step_into()<CR>', opts)
 vim.keymap.set("n", "<leader>dso", '<cmd>lua require"dap".step_out()<CR>', opts)
 vim.keymap.set("n", "<leader>dtb", '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts)
+
+-- harpoon
+local harpoon = require("harpoon")
+
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
+
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+vim.keymap.set("n", "<M-1>", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<M-2>", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<M-3>", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<M-4>", function() harpoon:list():select(4) end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+vim.keymap.set("n", "<C-f>[", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<C-f>]", function() harpoon:list():next() end)

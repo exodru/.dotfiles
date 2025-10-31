@@ -1,4 +1,3 @@
-local plenary = require("plenary.scandir")
 return {
   "mfussenegger/nvim-dap",
   dependencies = {

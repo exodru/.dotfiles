@@ -1,5 +1,6 @@
 return {
-  cmd = { "clangd" },
+  -- cmd = { "clangd" },
+  cmd = { "clangd", "--header-insertion=never", "--header-insertion-decorators=0", "--sort-includes=0" },
   capabilities = {
     offsetEncoding = { "utf-8", "utf-16" },
     textDocument = {
