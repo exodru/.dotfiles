@@ -17,7 +17,6 @@ plugins=(
 	git
   	z
 	zsh-autosuggestions
-	zsh-syntax-highlighting
 	fast-syntax-highlighting
 	zsh-autocomplete
 )
@@ -30,7 +29,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-# export PATH=$PATH:/usr/local/go/bin
 export PATH="$HOME/go/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 
@@ -38,15 +36,11 @@ alias xc='xclip -selection clipboard'
 alias nv='nvim'
 alias nvi='nvim ~/.config/nvim'
 alias kit='nvim ~/.config/kitty'
-alias pb='nvim ~/.config/polybar'
-alias i3wm='nvim ~/.config/i3'
 alias repos='cd ~/repos'
 alias x='exit'
 alias lg='lazygit'
 alias dots='cd ~/.dotfiles'
 alias gd='go doc --src '
-alias pc='nv ~/.config/picom/picom.conf'
-alias ncspot='flatpak run io.github.hrkfdn.ncspot'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
