@@ -46,8 +46,8 @@ alias gd='go doc --src '
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-#miktex
-export PATH="/home/prozod/bin:$PATH"
+#zig
+export PATH="$HOME/zig-x86_64:$PATH"
 
 #rofi wifi module
 export PATH="$HOME/.config/rofi/rofi_wifi_menu.sh:$PATH"
@@ -123,3 +123,7 @@ rmvenv() {
       rm -r $VENV_HOME/$1
   fi
 }
+
+
+# filen-cli
+PATH=$PATH:~/.filen-cli/bin
