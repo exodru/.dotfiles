@@ -1,9 +1,13 @@
 set $mod Mod4
-font pango:AdwaitaMono Nerd Font, FontAwesome 11
-# font pango:Terminess Nerd Font, FontAwesome 10
+font pango:SF Pro, FontAwesome 12
+
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
+# sleep screen and lock it, xset triggers display power manangemt timers
+# timers in dpms are (standby suspend off so 0 0 300sec)
+# after 300sec monitor turns off, triggers X11 idle state, xss calls i3lock
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xset dpms 0 0 300
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -11,7 +15,6 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
 
 # bindsym XF86AudioRaiseVolume exec "pamixer -ui 3 && pamixer --get-volume > /tmp/xobpipe"
 # bindsym XF86AudioLowerVolume exec "pamixer -ud 3 && pamixer --get-volume > /tmp/xobpipe"
@@ -33,7 +36,7 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec kitty
 
 # start browser
-bindsym $mod+Shift+Return exec librewolf
+bindsym $mod+Shift+Return exec waterfox
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -142,13 +145,22 @@ exec_always chmod +x ~/.config/i3/auto-display.sh
 exec_always --no-startup-id ~/.config/i3/auto-display.sh
 
 # wallpaper
-exec_always sh -c "sleep 0.25 && feh --bg-fill /home/prozod/walls/town_pixelated.jpg"
+# exec_always sh -c "sleep 0.25 && feh --bg-fill /home/prozod/walls/wall1.png"
+exec_always sh -c "sleep 0.25 && feh --bg-fill /home/prozod/walls/sensei.jpg"
 
 # polybar 
 exec_always --no-startup-id sh -c "sleep 0.5 && ~/.config/polybar/launch.sh"
 
+# --------- switch wallpaper script 
+# next wallpaper
+bindsym $mod+Shift+n exec --no-startup-id ~/bin/wallpaper_cycle.sh next
+
+# prev wallpaper
+bindsym $mod+Shift+b exec --no-startup-id ~/bin/wallpaper_cycle.sh prev
+
 # Screenshot region PrntScr
 bindsym Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+
 # rofi-wifi
 # bindsym $mod+n exec --no-startup-id ~/.config/rofi/rofi_wifi_menu.sh
 
@@ -161,7 +173,7 @@ bindsym $mod+Shift+x exec i3lock
 # Minimalist color palette
 set $bg           #0e0e0c
 set $fg           #ffffff
-set $accent       #7fffd4
+set $accent       #4d56ff
 set $alert        #ff4040
 set $separator    #727272
 
@@ -176,7 +188,7 @@ set $warning      #ffd700
 set $powerful     #ffffff
 
 # Classy minimalist borders with <powerful> accents
-client.focused          $powerful  $bg  $fg         $powerful   $powerful
+client.focused          $accent  $bg  $fg         $accent   $accent
 client.focused_inactive $mono1     $bg  $mono3      $mono1      $mono1
 client.unfocused        $mono0     $bg  $separator  $mono0      $mono0
 client.urgent           $powerful  $bg  $fg         $powerful   $powerful
@@ -184,15 +196,15 @@ client.placeholder      $bg        $bg  $fg         $bg         $bg
 client.background       $bg
 
 # borders and gaps
-smart_borders on
-# smart_gaps off
-# gaps inner 10
-# gaps outer 5
+# smart_borders on
+smart_gaps off
+gaps inner 10
+gaps outer 5
 
 # remove i3 borders
-default_border pixel 0
-default_floating_border pixel 0
-for_window [class=".*"] border pixel 1
+default_border pixel 4
+default_floating_border pixel 4
+for_window [class=".*"] border pixel 3
 
 # enable touchpad
 exec --no-startup-id xinput set-prop "SYNA2BA6:00 06CB:CEFE Touchpad" "libinput Tapping Enabled" 1
@@ -205,11 +217,13 @@ exec_always --no-startup-id setxkbmap -layout "us,ro" -variant ",std" -option "g
 exec --no-startup-id dunst
 exec --no-startup-id redshift
 
-exec --no-startup-id env GTK_THEME=Colloid-Dark nm-applet
-exec --no-startup-id thunar --daemon
+# exec --no-startup-id env GTK_THEME=Colloid-Dark nm-applet
+# exec --no-startup-id thunar --daemon
 
 exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
 # force US/RO layouts with Alt+Shift toggle
 exec --no-startup-id ~/.config/i3/set-keyboard.sh
 
+# Start a compositor to fix tearing and add effects
+exec --no-startup-id picom --config /home/prozod/.config/picom.conf --vsync -b

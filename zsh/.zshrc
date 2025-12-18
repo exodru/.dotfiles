@@ -35,7 +35,11 @@ export PATH=$PATH:/usr/local/go/bin
 alias xc='xclip -selection clipboard'
 alias nv='nvim'
 alias nvi='nvim ~/.config/nvim'
+alias pb='nvim ~/.config/polybar'
+alias pc='nvim ~/.config/picom.conf'
 alias kit='nvim ~/.config/kitty'
+alias dw='cd ~/Downloads'
+alias nt='cd ~/notes'
 alias repos='cd ~/repos'
 alias x='exit'
 alias lg='lazygit'
@@ -80,8 +84,7 @@ function y() {
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-
+eval "$(pyenv init - zsh)"
 
 #venv for molten, venv wrapper
 # usage

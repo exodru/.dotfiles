@@ -3,7 +3,7 @@
 */
 
 configuration {
-  font: "Inter Nerd Font 11";
+  font: "Ubuntu Nerd Font 12";
 
   drun {
     display-name: "";
@@ -29,11 +29,11 @@ configuration {
   padding: 0;
   spacing: 0;
 
-  bg: #161616;
-  bg-alt: #212121;
+  bg: #141414;
+  bg-alt: #191919;
   fg: #FFFFFF;
   fg-alt: #636363;
-  accent: #bfff00;
+  accent: #4d56ff;
 
   background-color: @bg;
   text-color: @fg;
@@ -41,6 +41,10 @@ configuration {
 
 window {
   transparency: "real";
+  border-color: @accent;
+  border: 3;
+	location: center;
+	anchor: center;
 }
 
 mainbox {
@@ -70,15 +74,25 @@ element {
   children: [element-icon, element-text];
 }
 
+
 element-icon {
-  padding: 10px 10px;
+  padding: 20px 10px;
 }
 
 element-text {
-  padding: 10px 0;
-  text-color: @fg-alt;
+  padding: 15px 0;
+	    vertical-align: 0.5;
 }
 
 element-text selected {
-  text-color: @accent;
+	  text-color: @accent;
+	  background-color: @bg-alt;
+	border: 1 0;
+	border-color: @accent;
 }
+element-icon selected {
+  background-color: @bg-alt;
+	border: 1 0;
+	border-color: @accent;
+}
+

@@ -17,6 +17,8 @@ return {
 				"shfmt",
 				"goimports",
 				"black",
+				"pyright",
+				"clangd",
 				-- "stylua", -- lua formatter; Already installed via Mason
 				-- "ruff", -- Python linter and formatter; Already installed via Mason
 			},
