@@ -38,6 +38,7 @@ alias nvi='nvim ~/.config/nvim'
 alias pb='nvim ~/.config/polybar'
 alias pc='nvim ~/.config/picom.conf'
 alias kit='nvim ~/.config/kitty'
+alias tmu='nvim ~/.tmux.conf'
 alias dw='cd ~/Downloads'
 alias nt='cd ~/notes'
 alias repos='cd ~/repos'
@@ -45,6 +46,8 @@ alias x='exit'
 alias lg='lazygit'
 alias dots='cd ~/.dotfiles'
 alias gd='go doc --src '
+alias py='python3'
+alias venv='source .venv/bin/activate'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -86,47 +89,3 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init - zsh)"
 
-#venv for molten, venv wrapper
-# usage
-# $ mkvenv myvirtualenv # creates venv under ~/.virtualenvs/
-# $ venv myvirtualenv   # activates venv
-# $ deactivate          # deactivates venv
-# $ rmvenv myvirtualenv # removes venv
-
-export VENV_HOME="$HOME/.virtualenvs"
-[[ -d $VENV_HOME ]] || mkdir $VENV_HOME
-
-lsvenv() {
-  ls -1 $VENV_HOME
-}
-
-venv() {
-  if [ $# -eq 0 ]
-    then
-      echo "Please provide venv name"
-    else
-      source "$VENV_HOME/$1/bin/activate"
-  fi
-}
-
-mkvenv() {
-  if [ $# -eq 0 ]
-    then
-      echo "Please provide venv name"
-    else
-      python3 -m venv $VENV_HOME/$1
-  fi
-}
-
-rmvenv() {
-  if [ $# -eq 0 ]
-    then
-      echo "Please provide venv name"
-    else
-      rm -r $VENV_HOME/$1
-  fi
-}
-
-
-# filen-cli
-PATH=$PATH:~/.filen-cli/bin

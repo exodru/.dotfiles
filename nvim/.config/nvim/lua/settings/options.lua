@@ -1,9 +1,16 @@
+-- this local is equal to :set in vim
 local set = vim.opt
+
 -- map leader to space
 vim.g.mapleader = " "
-set.termguicolors = true
+vim.g.maplocalleader = "\\"
 
--- this local is equal to :set in vim
+-- disable netrw cause i use nvim-tree filepicker
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- settings --
+set.termguicolors = true
 scriptencoding = "utf-8"
 set.encoding = "utf-8"
 set.fileencoding = "utf-8"
@@ -43,9 +50,9 @@ set.magic = true
 set.number = true
 set.visualbell = true
 set.splitright = true
+set.signcolumn = "yes"
 -- set.cursorcolumn = true
 -- set.cursorline = true
-set.signcolumn = "yes"
 -- set.colorcolumn = "120"
 set.cmdheight = 0
 vim.opt.scroll = 14
@@ -59,33 +66,8 @@ vim.opt.listchars = {
 	tab = "• ",
 }
 vim.opt.list = true
+vim.o.winborder = "rounded"
 
 -- highlight on yank
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank({ higroup = "IncSearch", timeout = 200 })')
 vim.cmd([[hi Visual guifg=#101010 guibg=#F6AC1F gui=none]])
-
--- pythonprovider
-vim.g["python3_host_prog"] = "/usr/bin/python3"
-
-set.guicursor =
-	"n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
-
--- format on save
--- vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
-
--- theme/color
--- vim.cmd([[colorscheme lunaperche]])
--- vim.cmd([[ highlight TelescopeBorder guibg=none ]])
--- vim.cmd([[ highlight TelescopeTitle guibg=none ]])
--- vim.cmd("hi Normal guibg=none ctermbg=none")
--- vim.cmd("hi NormalNC guibg=none ctermbg=none")
--- vim.cmd("hi NormalFloat guibg=none ctermbg=none")
--- vim.cmd("hi LineNr guibg=none ctermbg=none")
--- vim.cmd("hi Folded guibg=none ctermbg=none")
--- vim.cmd("hi NonText guibg=none ctermbg=none")
--- vim.cmd("hi SpecialKey guibg=none ctermbg=none")
--- vim.cmd("hi VertSplit guibg=none ctermbg=none")
--- vim.cmd("hi CursorLineNr guibg=none ctermbg=none")
--- vim.cmd("hi StatusLine guibg=none ctermbg=none")
--- vim.cmd("hi EndOfBuffer guibg=none ctermbg=none")
--- vim.cmd("hi SignColumn guibg=none ctermbg=none")
