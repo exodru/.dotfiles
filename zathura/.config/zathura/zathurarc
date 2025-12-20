@@ -1,0 +1,19 @@
+# Appearance settings
+set statusbar-h-padding 10
+set statusbar-v-padding 10
+set font "monospace 11"
+
+# UI Elements
+set guioptions "s"           # This specifically adds the scrollbar ('s')
+set guioptions "v"         # Use 'v' to add a vertical scrollbar if 's' isn't enough
+# set guioptions ""          # The default is empty (no UI elements)
+
+# Behavior
+set selection-clipboard clipboard  # Copy text directly to system clipboard
+set scroll-step 50                 # Adjust mouse wheel scroll speed
+set smooth-scroll true             # Better scrolling feel
+set render-loading true            # Show progress while rendering pages
+
+# Colors (Optional: Match a dark theme or Gruvbox/Solarized)
+set default-bg "#1d2021"
+set default-fg "#ebdbb2"

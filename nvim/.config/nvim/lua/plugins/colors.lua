@@ -10,6 +10,17 @@ return {
 
 		vim.cmd("colorscheme oldworld")
 
+		-- Blink CMP
+		vim.cmd("hi BlinkCmpMenu guibg=none ctermbg=none")
+		vim.cmd("hi BlinkCmpDoc guibg=none ctermbg=none")
+		vim.cmd("hi BlinkCmpSignatureHelp guibg=none ctermbg=none")
+		vim.cmd("hi BlinkCmpMenuBorder guibg=none ctermbg=none guifg=#7B7EEE")
+		vim.cmd("hi BlinkCmpDocBorder guibg=none ctermbg=none guifg=#7B7EEE")
+		vim.cmd("hi BlinkCmpSignatureHelpBorder guibg=none ctermbg=none guifg=#7B7EEE")
+		vim.cmd("hi BlinkCmpSignatureHelpActiveParameter guibg=none ctermbg=none guifg=#28F731")
+		vim.cmd("hi BlinkCmpKind guibg=none ctermbg=none guifg=#FFD34F")
+		vim.cmd("hi BlinkCmpLabelDetail guibg=none ctermbg=none guifg=#7B7EEE")
+
 		-- Telescope window borders
 		vim.cmd("hi TelescopeBorder guibg=none ctermbg=none guifg=#7B7EEE")
 		vim.cmd("hi TelescopePromptBorder guibg=none ctermbg=none guifg=#7B7EEE")
