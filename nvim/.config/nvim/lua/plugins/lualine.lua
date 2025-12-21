@@ -41,16 +41,15 @@ local function modes()
 end
 
 local colors = {
-	bg = "#161821",
-	-- fg     = "#d0d3d4",
-	fg = "#f0f0f0",
-	yellow = "#ede813",
-	red = "#ed121c",
-	green = "#01cd0f",
-	blue = "#5484f5",
-	gray = "#545c7e",
-	purple = "#ae13ed",
-	orange = "#ed8c13",
+	bg = "#191D24",
+	fg = "#D8DEE9",
+	yellow = "#EBCB8B",
+	red = "#BF616A",
+	green = "#A3BE8C",
+	blue = "#81A1C1",
+	gray = "#4C566A",
+	purple = "#B48EAD",
+	orange = "#D08770",
 }
 
 local custom_theme = {

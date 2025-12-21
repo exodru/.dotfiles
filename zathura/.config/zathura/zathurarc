@@ -14,6 +14,28 @@ set scroll-step 50                 # Adjust mouse wheel scroll speed
 set smooth-scroll true             # Better scrolling feel
 set render-loading true            # Show progress while rendering pages
 
-# Colors (Optional: Match a dark theme or Gruvbox/Solarized)
-set default-bg "#1d2021"
-set default-fg "#ebdbb2"
+
+# --- Zathura Dark Mode (#161718) ---
+
+# 1. Page Content (The PDF)
+set recolor               "true"
+set recolor-keephue       "true"      # Keeps images and links from looking weird
+set recolor-lightcolor    "#161718"  # Dark background for the page
+set recolor-darkcolor     "#dcdccc"  # Light gray text (easier on eyes than pure white)
+
+# 2. Window Workspace (The "Editor" background)
+set default-bg            "#0F1011"  # Background behind the pages
+set default-fg            "#dcdccc"  # Default text color
+
+# 3. Status and Input Bars
+set statusbar-bg          "#161718"  # Bottom status bar
+set statusbar-fg          "#dcdccc"
+set inputbar-bg           "#161718"  # Command line area
+set inputbar-fg           "#dcdccc"
+
+# 4. Refinements
+set completion-bg         "#161718"
+set completion-fg         "#dcdccc"
+set completion-highlight-bg "#333333" # Slightly lighter gray for selection
+set notification-bg       "#161718"
+set notification-fg       "#dcdccc"

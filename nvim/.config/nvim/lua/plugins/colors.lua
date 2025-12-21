@@ -1,14 +1,16 @@
 return {
-	"dgox16/oldworld.nvim",
+	"folke/tokyonight.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		require("oldworld").setup({
-			terminal_colors = true,
-			variant = "default", --- default, oled, cooler
+		require("tokyonight").setup({
+			transparent = true,
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent",
+			},
 		})
-
-		vim.cmd("colorscheme oldworld")
+		vim.cmd.colorscheme("tokyonight")
 
 		-- Blink CMP
 		vim.cmd("hi BlinkCmpMenu guibg=none ctermbg=none")
@@ -50,3 +52,14 @@ return {
 		vim.cmd("hi SignColumn guibg=none ctermbg=none")
 	end,
 }
+
+-- "dgox16/oldworld.nvim",
+-- lazy = false,
+-- priority = 1000,
+-- config = function()
+-- 	require("oldworld").setup({
+-- 		terminal_colors = true,
+-- 		variant = "default", --- default, oled, cooler
+-- 	})
+--	vim.cmd("colorscheme oldworld")
+--  end

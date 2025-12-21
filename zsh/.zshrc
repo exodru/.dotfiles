@@ -11,7 +11,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="agnoster"
 # ZSH_THEME="jreese"
 # ZSH_THEME="awesomepanda"
-ZSH_THEME="half-life"
+# ZSH_THEME="half-life"
+ZSH_THEME=""
 
 plugins=(
 	git
@@ -20,7 +21,6 @@ plugins=(
 	fast-syntax-highlighting
 	zsh-autocomplete
 )
-
 
 source $ZSH/oh-my-zsh.sh
 
@@ -48,6 +48,7 @@ alias dots='cd ~/.dotfiles'
 alias gd='go doc --src '
 alias py='python3'
 alias venv='source .venv/bin/activate'
+alias light='/home/DRU/devel/python/yee/.venv/bin/python /home/DRU/devel/python/yee/app.py'
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -88,4 +89,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init - zsh)"
+
+# THIS MUST BE LAST! FOR OH-MY-POSH
+# eval "$(oh-my-posh init zsh)"
+eval "$(oh-my-posh init zsh --config ~/.config/posh/0xdru.omp.json)"
 
