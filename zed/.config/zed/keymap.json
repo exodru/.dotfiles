@@ -1,0 +1,106 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "ctrl-f": null,
+      "g shift-i": null,
+      "g r i": null,
+    },
+  },
+  {
+    "context": "(FileFinder || FileFinder > Picker > Editor)",
+    "bindings": {
+      "ctrl-f o": "file_finder::Toggle",
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-p": null,
+      "ctrl-f o": "file_finder::Toggle",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-h": "pane::ActivatePreviousItem",
+      "alt-l": "pane::ActivateNextItem",
+      "alt-x": "pane::CloseActiveItem",
+      "ctrl-/": "workspace::ToggleBottomDock",
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w j": "workspace::ActivatePaneDown",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "alt-[": "editor::GoToPreviousReference",
+      "alt-]": "editor::GoToNextReference",
+      "ctrl-f s": "pane::DeploySearch",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "space b d": "pane::CloseActiveItem",
+      "space .": "editor::ToggleCodeActions",
+      "space t i": "editor::ToggleInlayHints",
+      "space e": "workspace::ToggleLeftDock",
+      "space f": "editor::Format",
+      "space v": "pane::SplitRight",
+      "space h": "pane::SplitDown",
+      "shift-k": "editor::Hover",
+      "gd": "editor::GoToDefinition",
+      "gt": "editor::GoToTypeDefinition",
+      "gi": "editor::GoToImplementation",
+      "grn": "editor::Rename",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+      "space d l": "diagnostics::Deploy",
+    },
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-/": "workspace::ToggleBottomDock",
+      "alt-n": "workspace::NewTerminal",
+      "alt-x": "pane::CloseActiveItem",
+      "alt-l": "pane::ActivateNextItem",
+      "alt-h": "pane::ActivatePreviousItem",
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w j": "workspace::ActivatePaneDown",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
+    },
+  },
+  // File panel (netrw)
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+    },
+  },
+]

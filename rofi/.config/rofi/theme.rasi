@@ -1,0 +1,98 @@
+/*
+ * ROFI color theme
+*/
+
+configuration {
+  font: "Ubuntu Nerd Font 12";
+
+  drun {
+    display-name: "";
+  }
+
+  run {
+    display-name: "";
+  }
+
+  window {
+    display-name: "";
+  }
+
+  timeout {
+    delay: 10;
+    action: "kb-cancel";
+  }
+}
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+
+  bg: #141414;
+  bg-alt: #191919;
+  fg: #FFFFFF;
+  fg-alt: #636363;
+  accent: #4d56ff;
+
+  background-color: @bg;
+  text-color: @fg;
+}
+
+window {
+  transparency: "real";
+  border-color: @accent;
+  border: 3;
+	location: center;
+	anchor: center;
+}
+
+mainbox {
+  children: [inputbar, listview];
+}
+
+inputbar {
+  background-color: @bg-alt;
+  children: [prompt, entry];
+}
+
+entry {
+  background-color: inherit;
+  padding: 12px 3px;
+}
+
+prompt {
+  background-color: inherit;
+  padding: 12px;
+}
+
+listview {
+  lines: 8;
+}
+
+element {
+  children: [element-icon, element-text];
+}
+
+
+element-icon {
+  padding: 20px 10px;
+}
+
+element-text {
+  padding: 15px 0;
+	    vertical-align: 0.5;
+}
+
+element-text selected {
+	  text-color: @accent;
+	  background-color: @bg-alt;
+	border: 1 0;
+	border-color: @accent;
+}
+element-icon selected {
+  background-color: @bg-alt;
+	border: 1 0;
+	border-color: @accent;
+}
+
