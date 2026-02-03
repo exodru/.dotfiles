@@ -28,6 +28,7 @@ if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; th
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8" 
     bindkey '^[[C' forward-char  # Right Arrow to accept
     bindkey '^ ' autosuggest-accept # Ctrl + Space to accept
+    bindkey '^E' autosuggest-accept # Ctrl + E to accept
 fi
 
 # 2. Autocomplete (The dropdown menu)
@@ -46,8 +47,6 @@ fi
 alias xc='xclip -selection clipboard'
 alias nv='nvim'
 alias nvi='nvim ~/.config/nvim'
-alias wb='nvim ~/.config/waybar'
-alias hp='nvim ~/.config/hypr'
 alias kit='nvim ~/.config/kitty'
 alias tmu='nvim ~/.tmux.conf'
 alias dw='cd ~/Downloads'
@@ -57,7 +56,6 @@ alias dots='cd ~/.dotfiles'
 alias gd='go doc --src '
 alias py='python3'
 alias venv='source .venv/bin/activate'
-alias light='/home/DRU/devel/python/yee/.venv/bin/python /home/DRU/devel/python/yee/app.py'
 
 csh() { curl "https://cheat.sh/$1"; }
 
@@ -95,5 +93,3 @@ eval "$(pyenv init - zsh)"
 # Initializations (Last for performance)
 eval "$(zoxide init zsh)"
 eval "$(oh-my-posh init zsh --config ~/.config/posh/0xdru.omp.json)"
-
-echo "|---> ZSH Config loaded <---|"

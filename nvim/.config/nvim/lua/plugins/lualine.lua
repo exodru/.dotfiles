@@ -1,5 +1,5 @@
 local mode_map = {
-  ["n"] = "NORMAL",
+  ["n"] = "NOR",
   ["no"] = "O·P",
   ["nov"] = "O·P",
   ["noV"] = "O·P",
@@ -17,7 +17,7 @@ local mode_map = {
   ["s"] = "S",
   ["S"] = "S·L",
   ["\19"] = "S·B",
-  ["i"] = "INSERT",
+  ["i"] = "INS",
   ["ic"] = "I·C",
   ["ix"] = "I·X",
   ["R"] = "R",
@@ -41,15 +41,19 @@ local function modes()
 end
 
 local colors = {
-  bg = "#191D24",
-  fg = "#D8DEE9",
-  yellow = "#EBCB8B",
-  red = "#BF616A",
-  green = "#A3BE8C",
-  blue = "#81A1C1",
-  gray = "#4C566A",
-  purple = "#B48EAD",
-  orange = "#D08770",
+  bg       = "#282c34",
+  fg       = "#bbc2cf",
+  yellow   = "#ecbe7b",
+  red      = "#ff6c6b",
+  green    = "#98be65",
+  blue     = "#51afef",
+  gray     = "#5b6268",
+  purple   = "#c678dd",
+  orange   = "#da8548",
+  teal     = "#4db5bd", -- Added for your y/z sections
+  white    = "#efefef", -- Added for your y/z sections
+  flamingo = "#ff6c6b", -- Used for branch
+  cherry   = "#ff6c6b", -- Used for fileformat
 }
 
 local custom_theme = {
@@ -64,7 +68,7 @@ local custom_theme = {
     c = { fg = colors.gray, bg = "NONE" },
   },
   visual = {
-    a = { fg = colors.bg, bg = colors.yellow, gui = "bold" },
+    a = { fg = colors.bg, bg = colors.purple, gui = "bold" },
     b = { fg = colors.fg, bg = "NONE" },
     c = { fg = colors.gray, bg = "NONE" },
   },

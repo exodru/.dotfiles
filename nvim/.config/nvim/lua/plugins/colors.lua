@@ -50,17 +50,20 @@
 -- }
 
 return {
-  "rebelot/kanagawa.nvim",
+  "EdenEast/nightfox.nvim",
   lazy = false,
   priority = 1000,
   config = function()
-    require("kanagawa").setup({
-      transparent = false,
-      theme = "dragon",
+    require('nightfox').setup({
+      options = {
+        transparent = true,     -- Disable setting background
+        terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+        dim_inactive = false,   -- Non focused panes set to alternative background
+      }
     })
-    vim.cmd.colorscheme("kanagawa")
+    vim.cmd.colorscheme('nightfox')
 
-    local accent = "#7e83fb"
+    local accent = "#7A9CC8"
     vim.cmd("hi BlinkCmpMenu guibg=none ctermbg=none")
     vim.cmd("hi BlinkCmpDoc guibg=none ctermbg=none")
     vim.cmd("hi BlinkCmpSignatureHelp guibg=none ctermbg=none")
