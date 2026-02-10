@@ -14,10 +14,10 @@ Cycle Overview Opposite=
 Decrease Opacity=
 Edit Tiles=Meta+T
 Expose=Ctrl+F9
-ExposeAll=Ctrl+F10; Launch (C)
+ExposeAll=Launch (C); Ctrl+F10
 ExposeClass=Ctrl+F7
 ExposeClassCurrentDesktop=
-Grid View=Meta+W
+Grid View=
 Increase Opacity=
 Kill Window=Meta+Ctrl+Esc
 Move Tablet to Next Output=
@@ -27,7 +27,7 @@ MoveZoomDown=
 MoveZoomLeft=
 MoveZoomRight=
 MoveZoomUp=
-Overview=Meta+G
+Overview=Meta+W
 Setup Window Shortcut=
 Show Desktop=
 Switch One Desktop Down=Meta+Ctrl+Down
@@ -126,6 +126,7 @@ Window Quick Tile Top Left=
 Window Quick Tile Top Right=
 Window Raise=
 Window Resize=
+Window Shade=
 Window Shrink Horizontal=
 Window Shrink Vertical=
 Window to Desktop 1=Meta+!
@@ -162,12 +163,12 @@ Window to Screen 6=
 Window to Screen 7=
 disableInputCapture=Meta+Shift+Esc
 view_actual_size=Meta+0
-view_zoom_in=Meta+=; Meta++
+view_zoom_in=Meta++; Meta+=
 view_zoom_out=Meta+-
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=Alt+Shift+F2
-_launch=Alt+F2; Meta+D; Search
+_launch=Search; Meta+D; Alt+F2
 
 [plasmashell][Global Shortcuts]
 Slideshow Wallpaper Next Image=
@@ -182,6 +183,7 @@ activate task manager entry 6=
 activate task manager entry 7=
 activate task manager entry 8=
 activate task manager entry 9=
+activate widget 36=
 clear-history=
 clipboard_action=Meta+Ctrl+X
 cycle-panels=Meta+Alt+P

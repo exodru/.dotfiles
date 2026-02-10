@@ -6,7 +6,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
 # Clean up PATH at once (Add new paths here)
-export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux-x86_64/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/zig-x86_64:$PYENV_ROOT/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux-x86_64/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/zig-x86_64:$PYENV_ROOT/bin:$PATH:QT_QPA_PLATFORM=xcb"
 
 # ------ Completion & Fpath Setup ----------
 # This MUST happen before any completion plugins are loaded
@@ -49,13 +49,26 @@ alias nv='nvim'
 alias nvi='nvim ~/.config/nvim'
 alias kit='nvim ~/.config/kitty'
 alias tmu='nvim ~/.tmux.conf'
-alias dw='cd ~/Downloads'
+alias dl='cd ~/Downloads'
 alias x='exit'
 alias lg='lazygit'
 alias dots='cd ~/.dotfiles'
 alias gd='go doc --src '
 alias py='python3'
 alias venv='source .venv/bin/activate'
+
+# ---- Various -----
+alias ..="cd .."
+alias ...="cd ../.."
+alias l='ls -A'
+alias ll='ls -Alhp'
+
+# ----- Git Commands ----
+alias g='git'
+alias gs='git status'
+alias gc='git commit -am'
+alias pull='git pull'
+alias push='git push'
 
 csh() { curl "https://cheat.sh/$1"; }
 
@@ -93,3 +106,5 @@ eval "$(pyenv init - zsh)"
 # Initializations (Last for performance)
 eval "$(zoxide init zsh)"
 eval "$(oh-my-posh init zsh --config ~/.config/posh/0xdru.omp.json)"
+
+export PATH=$PATH:/home/dru/.spicetify
