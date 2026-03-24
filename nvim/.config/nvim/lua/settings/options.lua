@@ -36,13 +36,13 @@ set.scrolloff = 8
 set.errorbells = false
 set.ruler = true
 set.clipboard = "unnamedplus"
-set.breakindent = true -- keep indentation when lines break
+set.breakindent = true         -- keep indentation when lines break
 set.breakindentopt = "shift:2" -- but shift it by 2 spaces
-set.linebreak = true -- break only at specific characters, :h breakat
+set.linebreak = true           -- break only at specific characters, :h breakat
 set.completeopt = {
-	"menuone",
-	"noinsert",
-	"noselect",
+  "menuone",
+  "noinsert",
+  "noselect",
 }
 set.autoindent = true
 set.smartindent = true
@@ -58,12 +58,12 @@ set.cmdheight = 0
 vim.opt.scroll = 14
 vim.opt.laststatus = 3
 vim.opt.listchars = {
-	eol = "↴",
-	extends = "›",
-	precedes = "‹",
-	nbsp = "␣",
-	trail = "·",
-	tab = "• ",
+  eol = "↴",
+  extends = "›",
+  precedes = "‹",
+  nbsp = "␣",
+  trail = "·",
+  tab = "• ",
 }
 vim.opt.list = true
 vim.o.winborder = "rounded"

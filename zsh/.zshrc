@@ -8,21 +8,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 # Clean up PATH at once (Add new paths here)
 export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux-x86_64/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/zig-x86_64:$PYENV_ROOT/bin:$PATH:QT_QPA_PLATFORM=xcb"
 
-# ------ Completion & Fpath Setup ----------
-# This MUST happen before any completion plugins are loaded
-if [ -d /usr/share/zsh/site-functions ]; then
-  fpath=(/usr/share/zsh/site-functions $fpath)
-fi
-
-# Initialize completion system (only if autocomplete isn't doing it)
-autoload -Uz compinit
-compinit
-
 # ------ Plugins Block ----------
 
-# 1. Autosuggestions (The "Phantom" text)
-if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# 1. Autosuggestions
+if [ -f ~/.zsh/zsh-autosuggestions.zsh ]; then
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
     # Behavior setup
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8" 
@@ -33,14 +23,14 @@ fi
 
 # 2. Autocomplete (The dropdown menu)
 # NOTE: If your ghost text flickers or feels laggy, comment this block out.
-if [ -f /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
-    source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+if [ -f ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
+    source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 fi
 
 
 # 3. Syntax Highlighting (ALWAYS LAST IN PLUGINS)
-if [ -f /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]; then
-    source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+if [ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]; then
+    source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 fi
 
 # ------ Aliases & Functions ----------
@@ -106,5 +96,3 @@ eval "$(pyenv init - zsh)"
 # Initializations (Last for performance)
 eval "$(zoxide init zsh)"
 eval "$(oh-my-posh init zsh --config ~/.config/posh/0xdru.omp.json)"
-
-export PATH=$PATH:/home/dru/.spicetify

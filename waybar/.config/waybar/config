@@ -1,0 +1,90 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 4,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "cpu", 
+        "memory", 
+        "battery", 
+        "pulseaudio", 
+        //"network",
+        "power-profiles-daemon", 
+        "bluetooth",
+        "tray"
+    ],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+
+    "clock": {
+        "format": "{:%d %B, %H:%M}",
+        "interval": 1,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "cpu": {
+        "format": "[CPU: {usage}%]",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "[RAM: {used:0.1f}GB]"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "[BAT: {capacity}%]",
+        "format-charging": "[CHG: {capacity}%]",
+        "format-plugged": "[PLG: {capacity}%]"
+    },
+
+    "bluetooth": {
+        "format": "[BT: {status}]",
+        "format-on": "[BT: On]",
+        "format-off": "[BT: Off]",
+        "format-disabled": "[BT: Disabled]",
+        "format-connected": "[BT: Connected]",
+        "on-click": "blueman-manager"
+    },
+
+    "pulseaudio": {
+        "format": "[AUD: {volume}%]",
+        "format-bluetooth": "[AUD-BT: {volume}%]",
+        "format-muted": "[AUD: Muted]",
+        "on-click": "pavucontrol",
+        "scroll-step": 5
+    },
+/*
+    "network": {
+        "format-wifi": "[WIFI: {essid}]",
+        "format-ethernet": "[ETH: {ifname}]",
+        "format-disconnected": "[NET: Off]",
+        "on-click": "kitty -e nmtui"
+    },
+
+*/
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}",
+        "format-icons": {
+          "default": "[PERF]",
+          "performance": "[PERF]",
+          "balanced": "[BLNC]",
+          "power-saver": "[PWRSV]"
+        }
+    },
+
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10
+    }
+}

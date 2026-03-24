@@ -1,0 +1,56 @@
+* {
+    font-family: "RobotoMono Nerd Font";
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background-color: #101112; /* nord0 */
+    color: #eceff4;            /* nord6 */
+}
+
+#tray {
+    margin-right: 10px; 
+}
+
+#workspaces button {
+    padding: 0 4px;
+    color: #707077;            /* nord3 */
+    border: 1px solid #303033;
+    background: transparent;
+}
+
+#workspaces button.focused {
+    color: #ffffff;            /* nord9 */
+    background: transparent;
+    border: 1px solid #81a1c1;
+}
+
+#workspaces button.urgent {
+    color: #bf616a;            /* nord11 */
+}
+
+/* Base padding for all modules */
+#clock, #cpu, #memory, #battery, #pulseaudio, #network, #power-profiles-daemon, #bluetooth, #tray {
+    padding: 0 1px;
+    font-weight: 600;
+}
+
+/* --- Nord Color Assignments --- */
+
+#clock { color: #eceff4; }                 /* White */
+#cpu { color: #b48ead; }                   /* Purple */
+#memory { color: #8fbcbb; }                /* Teal / Dark Pastel Green */
+#network { color: #d08770; }               /* Orange */
+#bluetooth { color: #81a1c1; }             /* Blue */
+#power-profiles-daemon { color: #a3be8c; } /* Green */
+
+/* Battery Colors (Changes dynamically) */
+#battery { color: #a3be8c; }               /* Green */
+#battery.warning { color: #ebcb8b; }       /* Yellow */
+#battery.critical { color: #bf616a; }      /* Red */
+
+/* Audio Colors */
+#pulseaudio { color: #ebcb8b; }            /* Yellow */
+#pulseaudio.muted { color: #707077; }      /* Dim Grey when muted */
