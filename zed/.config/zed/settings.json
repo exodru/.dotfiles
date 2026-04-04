@@ -1,13 +1,74 @@
 {
+  "tasks": {
+    "enabled": true
+  },
+  "inlay_hints": {
+    "show_background": true,
+    "enabled": false
+  },
+  "soft_wrap": "none",
+  "preferred_line_length": 90,
+  "vim": {
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": false
+  },
+  "toolbar": {
+    "code_actions": false,
+    "agent_review": false
+  },
+  "minimap": {
+    "show": "never"
+  },
+  "gutter": {
+    "min_line_number_digits": 4
+  },
+  "relative_line_numbers": "enabled",
+  "hover_popover_delay": 300,
+  "show_signature_help_after_edits": false,
+  "auto_signature_help": true,
+  "which_key": {
+    "enabled": true
+  },
+  "show_wrap_guides": true,
+  "unnecessary_code_fade": 0.5,
+  "search": {
+    "center_on_match": true,
+    "case_sensitive": false
+  },
+  "debugger": {
+    "timeout": 2000
+  },
+  "git": {
+    "inline_blame": {
+      "padding": 10,
+      "delay_ms": 0
+    }
+  },
+  "diagnostics": {
+    "button": true,
+    "include_warnings": true,
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 100,
+      "padding": 4,
+      "min_column": 0,
+      "max_severity": null,
+    },
+    "cargo": null,
+  },
   "edit_predictions": {
     "provider": "zed",
   },
   "disable_ai": true,
   "buffer_font_family": "MonaspiceNe Nerd Font",
   "ui_font_family": "SF Pro Text",
-  "ui_font_size": 16,
-  "buffer_font_size": 15,
+  "ui_font_size": 16.0,
+  "ui_font_weight": 400,
+  "buffer_font_size": 14.0,
+  "buffer_font_weight": 400,
   "agent": {
+    "flexible": true,
+    "button": false,
     "single_file_review": true,
     "model_parameters": [],
   },
@@ -17,49 +78,53 @@
     },
   },
   "git_panel": {
+    "show_count_badge": false,
+    "file_icons": true,
+    "dock": "right",
+    "tree_view": true,
     "status_style": "icon",
   },
   "project_panel": {
+    "hide_hidden": false,
+    "git_status_indicator": true,
+    "diagnostic_badges": true,
+    "bold_folder_labels": false,
+    "indent_size": 20.0,
+    "dock": "left",
+    "show_diagnostics": "all",
     "hide_root": false,
-    "entry_spacing": "standard",
+    "entry_spacing": "comfortable",
   },
   "title_bar": {
+    "show_branch_icon": true,
     "show_menus": false,
   },
   "tab_bar": {
     "show": true,
   },
   "tabs": {
+    "show_diagnostics": "errors",
     "file_icons": true,
     "git_status": true,
   },
+  "scrollbar": {
+    "git_diff": true,
+    "cursors": true,
+    "diagnostics": "all",
+  },
   "buffer_line_height": "standard",
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "JetBrains New UI Icons (Dark)",
+    "dark": "Material Icon Theme",
+  },
   "vim_mode": true,
   "base_keymap": "VSCode",
   "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "Min Dark (Blurred)",
+    "mode": "dark",
+    "light": "Monokai Night Soft",
+    "dark": "Fleeting Night",
   },
-  "experimental.theme_overrides": {
-    "background.appearance": "blurred",
-    "background": "#101112cc",
-    "editor.background": "#101112cc",
-    "terminal.background": "#101112cf",
-    "panel.background": "#101112cc",
-    "status_bar.background": "#101112cc",
-    "title_bar.background": "#101112cc",
-    "tab_bar.background": "#101112cc",
-    "editor.gutter.background": "#101112cc",
-
-    "tab.inactive_background": "#101112cc",
-    "tab.active_background": "#131415cc",
-    "editor.active_line.background": "#13141566",
-    "toolbar.background": "#131415cc",
-
-    "border": "#131415",
-    "border.variant": "#131415",
-    "panel.focused_border": "#252627",
-  },
+  "colorize_brackets": true,
+  "show_completions_on_input": true,
 }

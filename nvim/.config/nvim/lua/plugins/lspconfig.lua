@@ -8,9 +8,37 @@ return {
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       -- 2. Define server list (Fixed typos and removed non-LSP formatter)
-      local servers = { "lua_ls", "clangd", "basedpyright", "gopls", "ts_ls", "texlab" }
+      local servers = { "rust_analyzer", "lua_ls", "clangd", "basedpyright", "gopls", "ts_ls", "texlab" }
 
       -- 3. Register configs
+      -- Rust (rust-analyzer)
+      vim.lsp.config("rust_analyzer", {
+        capabilities = capabilities,
+        cmd = { "rust-analyzer" },
+        filetypes = { "rust" },
+        root_markers = { "Cargo.toml", "rust-project.json", ".git" },
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = {
+              allFeatures = true,
+              loadOutDirsFromCheck = true,
+              buildScripts = {
+                enable = true,
+              },
+            },
+            checkOnSave = {
+              -- Runs `cargo clippy` instead of `cargo check` on save
+              command = "clippy",
+            },
+            procMacro = {
+              enable = true,
+            },
+            diagnostics = {
+              enable = true,
+            },
+          },
+        },
+      })
 
       -- C++ (Added capabilities here)
       vim.lsp.config("clangd", {

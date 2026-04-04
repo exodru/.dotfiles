@@ -3,8 +3,8 @@ local keymap = vim.keymap.set
 local builtin = require("telescope.builtin")
 
 -- ++++++++ PERSONAL ADJUSTMENTS OF DEFAULT KEYBINDS +++++++++
-vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
-vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
+vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]])   -- make the window biger vertically
+vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]])   -- make the window smaller vertically
 vim.keymap.set("n", "+", [[<cmd>horizontal resize +3<cr>]]) -- make the window bigger horizontally by pressing shift and =
 vim.keymap.set("n", "_", [[<cmd>horizontal resize -3<cr>]]) -- make the window smaller horizontally by pressing shift and -
 vim.keymap.set({ "n", "i" }, "<leader>bd", "<Esc>:bd<CR>", opts)
@@ -54,76 +54,87 @@ vim.keymap.set("t", "<C-g>o", "<C-\\><C-n>:FloatermToggle<CR>", opts)
 
 -- +++++++ TELESCOPE +++++++++
 keymap("n", "<C-f>o", function()
-	builtin.find_files({ hidden = true })
+  builtin.find_files({ hidden = true })
 end, { desc = "Telescope find files" })
 
 keymap("n", "<C-f>f", function()
-	builtin.git_files()
+  builtin.git_files()
 end, { desc = "Telescope search through git files, respects .gitignore" })
 
 keymap("n", "<C-f>p", function()
-	builtin.buffers()
+  builtin.buffers()
 end, { desc = "Telescope buffers" })
 
 keymap("n", "<leader>fg", function()
-	builtin.live_grep()
+  builtin.live_grep()
 end, { desc = "Telescope live grep" })
 
 keymap("n", "<leader>fh", function()
-	builtin.help_tags()
+  builtin.help_tags()
 end, { desc = "Telescope help tags" })
 
 keymap("n", "<leader>fs", function()
-	builtin.lsp_document_symbols()
+  builtin.lsp_document_symbols()
 end, { desc = "Telescope document symbols" })
 
 keymap("n", "<leader>vr", function()
-	builtin.lsp_references()
+  builtin.lsp_references()
 end, { desc = "Telescope references for word under cursor" })
 
 keymap("n", "<leader>vd", function()
-	builtin.diagnostics()
+  builtin.diagnostics()
 end, { desc = "Telescope lists open buffers diagnostics" })
 
 keymap("n", "<leader>gd", function()
-	builtin.lsp_definitions()
+  builtin.lsp_definitions()
 end, { desc = "Telescope go to the definition of word under cursor" })
 
 keymap("n", "<leader>gt", function()
-	builtin.lsp_type_definitions()
+  builtin.lsp_type_definitions()
 end, { desc = "Telescope go to the TYPE definition of word under cursor" })
 
 -- manpages
 keymap("n", "<leader>mp", function()
-	builtin.man_pages()
+  builtin.man_pages()
 end, { desc = "Telescope man pages" })
 
 -- histories
 keymap("n", "<leader>sh", function()
-	builtin.search_history()
+  builtin.search_history()
 end, { desc = "Telescope list previous searches" })
 
 keymap("n", "<leader>ch", function()
-	builtin.command_history()
+  builtin.command_history()
 end, { desc = "Telescope list previous commands" })
 
 -- git telescope
 keymap("n", "<leader>gs", function()
-	builtin.git_stash()
+  builtin.git_stash()
 end, { desc = "Telescope git stash" })
 
 keymap("n", "<leader>gt", function()
-	builtin.git_status()
+  builtin.git_status()
 end, { desc = "Telescope git status" })
 
 keymap("n", "<leader>gb", function()
-	builtin.git_branches()
+  builtin.git_branches()
 end, { desc = "Telescope git branches" })
 
 keymap("n", "<leader>gc", function()
-	builtin.git_commits()
+  builtin.git_commits()
 end, { desc = "Telescope git commits" })
 
+
 keymap("n", "<leader>bc", function()
-	builtin.git_bcommits()
+  builtin.git_bcommits()
 end, { desc = "Telescope git commit PER BUFFER WITH DIFF PREVIEW" })
+
+-- +++++++++++++ NVIM DAP +++++++++++++++
+vim.keymap.set("n", "<F5>", require("dap").continue, { desc = "Debug: Start/Continue" })
+vim.keymap.set("n", "<F10>", require("dap").step_over, { desc = "Debug: Step Over" })
+vim.keymap.set("n", "<F11>", require("dap").step_into, { desc = "Debug: Step Into" })
+vim.keymap.set("n", "<F12>", require("dap").step_out, { desc = "Debug: Step Out" })
+vim.keymap.set("n", "<leader>b", require("dap").toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
+vim.keymap.set("n", "<leader>B", function()
+  require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end, { desc = "Debug: Conditional Breakpoint" })
