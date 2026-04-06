@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 32,
+    "height": 30,
     "spacing": 4,
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["clock"],
@@ -12,9 +12,18 @@
         "pulseaudio", 
         //"network",
         "power-profiles-daemon", 
+        "sway/language",
         "bluetooth",
         "tray"
     ],
+
+    "sway/language": {
+        "format": "[{}]",
+        "tooltip": false,
+        "format-en": "US",
+        "format-ro": "RO",
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+    },
 
     "sway/workspaces": {
         "disable-scroll": true,

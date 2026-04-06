@@ -1,6 +1,7 @@
 * {
-    font-family: "RobotoMono Nerd Font";
+    font-family: "Arimo Nerd Font";
     font-size: 14px;
+    font-weight: 300;
     border: none;
     border-radius: 0;
 }
@@ -15,16 +16,16 @@ window#waybar {
 }
 
 #workspaces button {
-    padding: 0 4px;
-    color: #707077;            /* nord3 */
-    border: 1px solid #303033;
+    padding: 0 1px;
+    color: #606062;            /* nord3 */
+    border: 1px solid #222223;
     background: transparent;
 }
 
 #workspaces button.focused {
     color: #ffffff;            /* nord9 */
     background: transparent;
-    border: 1px solid #81a1c1;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.7);
 }
 
 #workspaces button.urgent {
@@ -38,19 +39,24 @@ window#waybar {
 }
 
 /* --- Nord Color Assignments --- */
+/* Xcode Dark Palette */
+#clock { color: #ffffff; }             /* Main Text */
+#cpu { color: #5fb6f0; }                                 /* Xcode Blue (Methods) */
+#memory { color: #dcb1ff; }                              /* Xcode Purple (Types) */
+#network { color: #f27893; }                             /* Xcode Pink (Attributes) */
+#bluetooth { color: #5fb6f0; }                           /* Xcode Blue */
+#power-profiles-daemon { color: #76c07a; }               /* Xcode Green (Strings) */
 
-#clock { color: #eceff4; }                 /* White */
-#cpu { color: #b48ead; }                   /* Purple */
-#memory { color: #8fbcbb; }                /* Teal / Dark Pastel Green */
-#network { color: #d08770; }               /* Orange */
-#bluetooth { color: #81a1c1; }             /* Blue */
-#power-profiles-daemon { color: #a3be8c; } /* Green */
-
-/* Battery Colors (Changes dynamically) */
-#battery { color: #a3be8c; }               /* Green */
-#battery.warning { color: #ebcb8b; }       /* Yellow */
-#battery.critical { color: #bf616a; }      /* Red */
+/* Battery Colors */
+#battery { color: #76c07a; }                             /* Green */
+#battery.warning { color: #f4c750; }                      /* Xcode Gold */
+#battery.critical { color: #ff615c; }                     /* Xcode Red */
 
 /* Audio Colors */
-#pulseaudio { color: #ebcb8b; }            /* Yellow */
-#pulseaudio.muted { color: #707077; }      /* Dim Grey when muted */
+#pulseaudio { color: #f4c750; }                          /* Xcode Gold */
+#pulseaudio.muted { color: #7a818e; }                    /* Xcode Gray (Comments) */
+
+#language {
+    color: #f27893;                                      /* Bright Xcode Blue */
+    font-weight: bold;
+}

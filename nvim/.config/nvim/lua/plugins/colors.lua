@@ -1,15 +1,33 @@
 return {
-  'sainnhe/sonokai',
+  "fraeso/xcodedark.nvim",
   lazy = false,
   priority = 1000,
   config = function()
-    -- Optionally configure and load the colorscheme
-    -- directly inside the plugin declaration.
-    vim.g.sonokai_enable_italic = true
-    vim.g.sonokai_transparent_background = 2
-    vim.cmd.colorscheme("sonokai")
+    require("xcodedark").setup({
+      transparent = true, -- or false if you prefer solid background
 
-    local accent = "#72CCE8" -- Blink CMP
+      integrations = {
+        telescope = true,
+        nvim_tree = true,
+        gitsigns = true,
+        bufferline = true,
+        incline = true,
+        lazygit = true,
+        which_key = true,
+        notify = true,
+        snacks = true,
+        blink = true,
+      },
+
+      terminal_colors = true,
+
+      color_overrides = {
+        selection = "#4c0623",
+      }
+    })
+    vim.cmd.colorscheme("xcodedark")
+
+    local accent = "#E07AB2" -- Blink CMP
     vim.cmd("hi BlinkCmpMenu guibg=none ctermbg=none")
     vim.cmd("hi BlinkCmpDoc guibg=none ctermbg=none")
     vim.cmd("hi BlinkCmpSignatureHelp guibg=none ctermbg=none")
@@ -49,8 +67,62 @@ return {
     vim.cmd("hi SignColumn guibg=none ctermbg=none")
     vim.cmd("hi Visual guibg=#434C5E")
     vim.cmd("hi VisualNOS guibg=#434C5E")
-  end
+  end,
 }
+
+-- return {
+--   'sainnhe/sonokai',
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     -- Optionally configure and load the colorscheme
+--     -- directly inside the plugin declaration.
+--     vim.g.sonokai_enable_italic = true
+--     vim.g.sonokai_transparent_background = 2
+--     vim.cmd.colorscheme("sonokai")
+--
+--     local accent = "#72CCE8" -- Blink CMP
+--     vim.cmd("hi BlinkCmpMenu guibg=none ctermbg=none")
+--     vim.cmd("hi BlinkCmpDoc guibg=none ctermbg=none")
+--     vim.cmd("hi BlinkCmpSignatureHelp guibg=none ctermbg=none")
+--     vim.cmd("hi BlinkCmpMenuBorder guibg=none ctermbg=none guifg=" .. accent)
+--     vim.cmd("hi BlinkCmpDocBorder guibg=none ctermbg=none guifg=" .. accent)
+--     vim.cmd("hi BlinkCmpSignatureHelpBorder guibg=none ctermbg=none guifg=" .. accent)
+--     vim.cmd("hi BlinkCmpSignatureHelpActiveParameter guibg=none ctermbg=none guifg=#28F731")
+--     vim.cmd("hi BlinkCmpKind guibg=none ctermbg=none guifg=#FFD34F")
+--     vim.cmd("hi BlinkCmpLabelDetail guibg=none ctermbg=none guifg=" .. accent)
+--
+--     -- Telescope window borders
+--     vim.cmd("hi TelescopeBorder guibg=none ctermbg=none guifg=" .. accent)
+--     vim.cmd("hi TelescopePromptBorder guibg=none ctermbg=none guifg=" .. accent)
+--     vim.cmd("hi TelescopeResultsBorder guibg=none ctermbg=none guifg=" .. accent)
+--     vim.cmd("hi TelescopePreviewBorder guibg=none ctermbg=none guifg=" .. accent)
+--
+--     -- Telescope backgrounds (set to none for transparency)
+--     vim.cmd("hi TelescopeTitle guibg=none")
+--     vim.cmd("hi TelescopeNormal guibg=none ctermbg=none")
+--     vim.cmd("hi TelescopePromptNormal guibg=none ctermbg=none")
+--     vim.cmd("hi TelescopeResultsNormal guibg=none ctermbg=none")
+--     vim.cmd("hi TelescopePreviewNormal guibg=none ctermbg=none")
+--
+--     -- Other default neovim highlights
+--     vim.cmd("hi Normal guibg=none ctermbg=none")
+--     vim.cmd("hi NormalNC guibg=none ctermbg=none")
+--     vim.cmd("hi NormalFloat guibg=none ctermbg=none")
+--     vim.cmd("hi FloatBorder guibg=none ctermbg=none guifg=" .. accent)
+--     vim.cmd("hi LineNr guibg=none ctermbg=none")
+--     vim.cmd("hi Folded guibg=none ctermbg=none")
+--     vim.cmd("hi NonText guibg=none ctermbg=none")
+--     vim.cmd("hi SpecialKey guibg=none ctermbg=none")
+--     vim.cmd("hi VertSplit guibg=none ctermbg=none")
+--     vim.cmd("hi CursorLineNr guibg=none ctermbg=none")
+--     vim.cmd("hi StatusLine guibg=none ctermbg=none")
+--     vim.cmd("hi EndOfBuffer guibg=none ctermbg=none")
+--     vim.cmd("hi SignColumn guibg=none ctermbg=none")
+--     vim.cmd("hi Visual guibg=#434C5E")
+--     vim.cmd("hi VisualNOS guibg=#434C5E")
+--   end
+-- }
 
 -- return {
 --   "datsfilipe/vesper.nvim",

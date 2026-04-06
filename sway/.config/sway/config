@@ -3,40 +3,44 @@ set $mod Mod4
 set $term kitty
 set $menu wofi --show drun
 
-# Refined Deep-Dark Nordic Palette
-set $nord0  #101112
-set $nord1  #161718
-set $nord2  #434c5e
-set $nord3  #707077
-set $nord4  #d8dee9
-set $nord5  #e5e9f0
-set $nord6  #eceff4
-set $nord7  #8fbcbb
-set $nord8  #2e3440
-set $nord9  #81a1c1
-set $nord10 #5e81ac
-set $nord11 #bf616a
-set $nord12 #d08770
-set $nord13 #ebcb8b
-set $nord14 #a3be8c
-set $nord15 #b48ead
+# Xcode Monochrome Palette
+set $bg_dark    #101112
+set $bg_soft    #161718
+set $selection  #434c5e
+set $muted      #4c566a
+set $fg_main    #d8dee9
+set $fg_bright  #eceff4
+
+# Xcode Nuance Accents
+set $xc_cyan    #6BDFFF
+set $xc_purple  #D5B4E2
+set $xc_blue    #78C2B3
+set $xc_red     #FF8170
 
 # Typography
 font pango:JetBrainsMono Nerd Font 10
 
 ### Output & Input
-output * bg #101112 solid_color
-# If you prefer your wallpaper, uncomment the line below:
-# output * bg ~/Pictures/walls/mornye-dark.jpg fill
+output * bg $bg_dark solid_color
 
-input type:keyboard {
-    xkb_layout "us,ro"
-    xkb_options "grp:alt_shift_toggle,ctrl:nocaps,shift:caps_toggle"
+# Secondary monitor (Left)
+output HDMI-A-1 {
+    pos 1920 0
+}
+
+# Primary monitor (Right)
+output eDP-1 {
+    pos 0 0
+}
+
+input * {
+    xkb_layout us,ro
+    xkb_variant ,std
+    xkb_options grp:alt_shift_toggle,ctrl:nocaps 
     repeat_delay 260
     repeat_rate 40
 }
 
-# Enable and configure touchpad
 input "type:touchpad" {
     tap enabled
     natural_scroll enabled
@@ -47,16 +51,16 @@ input "type:touchpad" {
 ### Window Style & Colors
 default_border pixel 1
 default_floating_border normal
-smart_borders off
+smart_borders on
 smart_gaps on
-gaps inner 0
+gaps inner 4
 gaps outer 0
 
-# class                 border  backgr. text    indicator child_border
-client.focused          $nord10 $nord10 $nord6  $nord9    $nord10
-client.focused_inactive $nord0  $nord0  $nord3  $nord0    $nord0
-client.unfocused        $nord0  $nord0  $nord3  $nord0    $nord0
-client.urgent           $nord11 $nord11 $nord6  $nord11   $nord11
+# class                 border      backgr.     text        indicator   child_border
+client.focused          $xc_cyan    $bg_dark    $fg_bright  $xc_cyan    $xc_cyan
+client.focused_inactive $bg_dark    $bg_dark    $muted      $bg_dark    $bg_dark
+client.unfocused        $bg_dark    $bg_dark    $muted      $bg_dark    $bg_dark
+client.urgent           $xc_red     $xc_red     $bg_dark    $xc_red     $xc_red
 
 ### Keybindings
 bindsym $mod+Return exec $term
@@ -75,7 +79,7 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# Workspaces (1-10)
+# Workspaces
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -115,35 +119,35 @@ bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@
 bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 10%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 10%+
+
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
 bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
 bindsym $mod+Shift+s exec systemctl suspend
-bindsym $mod+Ctrl+l exec swaylock -f -c 080910
+bindsym $mod+Ctrl+l exec swaylock -f -c $bg_dark
+bindsym $mod+m input "type:touchpad" events toggle enabled disabled
 
 ### Bar
 bar {
-    font pango:JetBrainsMono Nerd Font 11
+    font pango:Arimo Nerd Font 11
     position top
-    # status_command while date +'%Y-%m-%d %H:%M:%S'; do sleep 1; done
     swaybar_command waybar 
     colors {
-        statusline         $nord6
-        background         $nord0
-        separator          $nord2
+        statusline         $fg_bright
+        background         $bg_dark
+        separator          $bg_soft
         
-        # Workspace Colors      Border  BG      Text
-        focused_workspace       $nord0  $nord0  $nord10
-        active_workspace        $nord0  $nord0  $nord6
-        inactive_workspace      $nord0  $nord0  $nord3
-        urgent_workspace        $nord0  $nord0  $nord11
+        # Workspace Colors      Border      BG          Text
+        focused_workspace       $bg_dark    $bg_dark    $xc_cyan
+        active_workspace        $bg_dark    $bg_dark    $fg_bright
+        inactive_workspace      $bg_dark    $bg_dark    $muted
+        urgent_workspace        $bg_dark    $bg_dark    $xc_red
     }
 }
 
+### Autostart
 exec dunst
 exec /usr/libexec/lxqt-policykit-agent
 exec_always nm-applet --indicator
-
-# prevent idle when audio is playing (requires sway-audio-idle-inhibit)
 exec sway-audio-idle-inhibit
 
 exec swayidle -w \
@@ -152,4 +156,4 @@ exec swayidle -w \
     resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -f -c 101112'
 
-include /etc/sway/config.d/*
+# include /etc/sway/config.d/*

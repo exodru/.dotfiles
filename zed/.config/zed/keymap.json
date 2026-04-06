@@ -41,6 +41,7 @@
       "alt-[": "editor::GoToPreviousReference",
       "alt-]": "editor::GoToNextReference",
       "ctrl-f s": "pane::DeploySearch",
+      "space t t": "theme::ToggleMode",
     },
   },
   {

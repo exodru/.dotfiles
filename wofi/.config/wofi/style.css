@@ -1,0 +1,58 @@
+window {
+    margin: 0px;
+    border: 1px solid #303031;
+    border-radius: 2px;
+    background-color: #101011;
+    font-family: "Arimo Nerd Font", sans-serif;
+    font-size: 14px;
+}
+
+#outer-box {
+    margin: 5px;
+    border: none;
+    background-color: transparent;
+    padding: 16px;
+}
+
+#inner-box {
+    margin: 5px 0 0px 0;
+    border: none;
+    background-color: transparent;
+}
+
+
+#input:focus {
+    border: 1px solid #81a1c1;
+}
+
+#scroll {
+    margin: 5px;
+    border: none;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: #bcbcb1;
+}
+
+/* ---- accent colors are only below here */
+#entry:selected {
+    background-color: #161617;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    outline: none;
+}
+
+#text:selected {
+    color: #fff;
+    font-weight: 500;
+}
+
+#input {
+    margin: 5px;
+    border: 1px solid #303031;
+    color: #eceff4;
+    background-color: #101011;
+    border-radius: 2px;
+}
