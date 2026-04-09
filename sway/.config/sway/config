@@ -21,7 +21,8 @@ set $xc_red     #FF8170
 font pango:JetBrainsMono Nerd Font 10
 
 ### Output & Input
-output * bg $bg_dark solid_color
+# output * bg $bg_dark solid_color
+exec_always swaybg -i ~/Pictures/walls/mornye-dark.jpg &
 
 # Secondary monitor (Left)
 output HDMI-A-1 {

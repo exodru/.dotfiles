@@ -93,6 +93,25 @@ return {
         },
       })
 
+      -- Go (gopls)
+      vim.lsp.config("gopls", {
+        capabilities = capabilities,
+        cmd = { "gopls" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        root_markers = { "go.work", "go.mod", ".git" },
+        settings = {
+          gopls = {
+            completeUnimported = true,
+            usePlaceholders = true,
+            analyses = {
+              unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true, -- Highly recommended for standard Go formatting
+          },
+        },
+      })
+
       -- LaTeX (Texlab)
       vim.lsp.config("texlab", {
         capabilities = capabilities,

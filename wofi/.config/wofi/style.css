@@ -1,7 +1,6 @@
 window {
     margin: 0px;
-    border: 1px solid #303031;
-    border-radius: 2px;
+    border: 1px solid #757576;
     background-color: #101011;
     font-family: "Arimo Nerd Font", sans-serif;
     font-size: 14px;
@@ -11,18 +10,13 @@ window {
     margin: 5px;
     border: none;
     background-color: transparent;
-    padding: 16px;
+    padding: 10px;
 }
 
 #inner-box {
     margin: 5px 0 0px 0;
     border: none;
     background-color: transparent;
-}
-
-
-#input:focus {
-    border: 1px solid #81a1c1;
 }
 
 #scroll {
@@ -37,22 +31,30 @@ window {
 }
 
 /* ---- accent colors are only below here */
+
+
 #entry:selected {
-    background-color: #161617;
+    background-color: #141415;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 2px;
+    border-left: 5px solid #5fb6f0;
+    border-radius: 1px;
+    padding-left: 10px;
     outline: none;
 }
 
 #text:selected {
-    color: #fff;
-    font-weight: 500;
+    color: #5fb6f0;
+    font-weight: 600;
 }
 
 #input {
     margin: 5px;
-    border: 1px solid #303031;
+    border: 1px solid #808081;
     color: #eceff4;
     background-color: #101011;
-    border-radius: 2px;
+    border-radius: 1px;
 }
+
+#input:focus {
+}
+

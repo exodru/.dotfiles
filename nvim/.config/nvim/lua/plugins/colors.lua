@@ -1,33 +1,28 @@
 return {
-  "fraeso/xcodedark.nvim",
+  "miikanissi/modus-themes.nvim",
   lazy = false,
   priority = 1000,
   config = function()
-    require("xcodedark").setup({
-      transparent = true, -- or false if you prefer solid background
-
-      integrations = {
-        telescope = true,
-        nvim_tree = true,
-        gitsigns = true,
-        bufferline = true,
-        incline = true,
-        lazygit = true,
-        which_key = true,
-        notify = true,
-        snacks = true,
-        blink = true,
+    require("modus-themes").setup({
+      variants = {
+        -- modus_operandi = "default", -- Set variant for `modus_operandi` style
+        modus_vivendi = "default",       -- Set variant for `modus_vivendi` style
       },
-
-      terminal_colors = true,
-
-      color_overrides = {
-        selection = "#4c0623",
-      }
+      transparent = true,                -- Transparent background (as supported by the terminal)
+      dim_inactive = true,               -- "non-current" windows are dimmed
+      line_nr_column_background = false, -- Distinct background colors in line number column. `false` will disable background color and fallback to Normal background
+      sign_column_background = false,    -- Distinct background colors in sign column. `false` will disable background color and fallback to Normal background
+      background_clear = {
+        "float_win",
+        "nvim-tree", -- Specifically clear nvim-tree background
+        "neo-tree",
+        "telescope",
+      },
     })
-    vim.cmd.colorscheme("xcodedark")
 
-    local accent = "#E07AB2" -- Blink CMP
+    vim.cmd.colorscheme("modus")
+
+    local accent = "#349DA6" -- Blink CMP
     vim.cmd("hi BlinkCmpMenu guibg=none ctermbg=none")
     vim.cmd("hi BlinkCmpDoc guibg=none ctermbg=none")
     vim.cmd("hi BlinkCmpSignatureHelp guibg=none ctermbg=none")
@@ -67,6 +62,12 @@ return {
     vim.cmd("hi SignColumn guibg=none ctermbg=none")
     vim.cmd("hi Visual guibg=#434C5E")
     vim.cmd("hi VisualNOS guibg=#434C5E")
+
+    -- Force NvimTree transparency
+    vim.cmd("hi NvimTreeNormal guibg=none ctermbg=none")
+    vim.cmd("hi NvimTreeNormalNC guibg=none ctermbg=none")
+    vim.cmd("hi NvimTreeWinSeparator guibg=none ctermbg=none")
+    vim.cmd("hi NvimTreeEndOfBuffer guibg=none ctermbg=none")
   end,
 }
 

@@ -1,4 +1,7 @@
 mode=drun
+no_actions=true
+allow_images=true
+image_size=30
 width=400
 height=350
 always_parse_args=true
@@ -6,6 +9,6 @@ show_all=false
 print_command=true
 layer=overlay
 insensitive=true
-prompt=Search Apps...
+prompt=Search...
 display_generic=true
 location=center
