@@ -1,9 +1,13 @@
 return {
   "saghen/blink.cmp",
-  build = "cargo build --release",
+  build = function()
+    -- build the fuzzy matcher, optionally add a timeout to `pwait(timeout_ms)`
+    -- you can use `gb` in `:Lazy` to rebuild the plugin as needed
+    require('blink.cmp').build():pwait()
+  end,
   cond = not vim.g.vscode,
   lazy = false,
-  dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
+  dependencies = { { "L3MON4D3/LuaSnip", version = "v2.*" }, { "saghen/blink.lib" } },
   opts = {
     snippets = { preset = "luasnip" },
     keymap = {
@@ -16,6 +20,7 @@ return {
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
     },
+    fuzzy = { implementation = "rust" },
     completion = {
       keyword = { range = "full" },
       list = { selection = { preselect = true, auto_insert = false } },

@@ -46,6 +46,8 @@ alias dots='cd ~/.dotfiles'
 alias gd='go doc --src '
 alias py='python3'
 alias venv='source .venv/bin/activate'
+alias et="emacs -nw"
+
 
 # ---- Various -----
 alias ..="cd .."
@@ -59,6 +61,9 @@ alias gs='git status'
 alias gc='git commit -am'
 alias pull='git pull'
 alias push='git push'
+
+# ---- LSD ----
+alias ls='lsd'
 
 csh() { curl "https://cheat.sh/$1"; }
 
@@ -96,3 +101,11 @@ eval "$(pyenv init - zsh)"
 # Initializations (Last for performance)
 eval "$(zoxide init zsh)"
 eval "$(oh-my-posh init zsh --config ~/.config/posh/0xdru.omp.json)"
+FPATH="$HOME/.docker/completions:$FPATH"
+autoload -Uz compinit
+compinit
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/dru/.lmstudio/bin"
+# End of LM Studio CLI section
+

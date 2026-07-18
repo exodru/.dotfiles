@@ -129,7 +129,7 @@ bindsym $mod+m input "type:touchpad" events toggle enabled disabled
 
 ### Bar
 bar {
-    font pango:Arimo Nerd Font 11
+    font pango:JetBrainsMono Nerd Font 11
     position top
     swaybar_command waybar 
     colors {

@@ -17,10 +17,10 @@
     ],
 
     "sway/language": {
-        "format": " {}",
+        "format": "  {}",
         "tooltip": false,
-        "format-en": " US",
-        "format-ro": " RO",
+        "format-en": "  US",
+        "format-ro": "  RO",
         "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
     },
 
@@ -65,9 +65,9 @@
     },
 
     "pulseaudio": {
-        "format": " {volume}%",
-        "format-bluetooth": "  {volume}%",
-        "format-muted": " Muted",
+        "format": "  {volume}%",
+        "format-bluetooth": "   {volume}%",
+        "format-muted": "  Muted",
         "on-click": "pavucontrol",
         "scroll-step": 5
     },
@@ -77,9 +77,9 @@
         "tooltip-format": "Power profile: {profile}",
         "format-icons": {
           "default": "",
-          "performance": "󰓅 Performance",
-          "balanced": " Balanced",
-          "power-saver": " Powersave"
+          "performance": "󰓅  Performance",
+          "balanced": "  Balanced",
+          "power-saver": "  Powersave"
         }
     },
 
