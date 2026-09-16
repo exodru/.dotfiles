@@ -1,6 +1,6 @@
 ### Variables
 set $mod Mod4
-set $term kitty
+set $term ghostty
 set $menu wofi --show drun
 
 # Xcode Monochrome Palette
@@ -22,7 +22,7 @@ font pango:JetBrainsMono Nerd Font 10
 
 ### Output & Input
 # output * bg $bg_dark solid_color
-exec_always swaybg -i ~/Pictures/walls/mornye-dark.jpg &
+exec_always swaybg -i ~/Pictures/walls/obscure.png &
 
 # Secondary monitor (Left)
 output HDMI-A-1 {
@@ -147,7 +147,7 @@ bar {
 
 ### Autostart
 exec dunst
-exec /usr/libexec/lxqt-policykit-agent
+# exec /usr/libexec/lxqt-policykit-agent
 exec_always nm-applet --indicator
 exec sway-audio-idle-inhibit
 

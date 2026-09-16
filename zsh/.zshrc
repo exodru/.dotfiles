@@ -5,8 +5,11 @@ export TERM="xterm-256color"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
-# Clean up PATH at once (Add new paths here)
-export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux-x86_64/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/zig-x86_64:$PYENV_ROOT/bin:$PATH:QT_QPA_PLATFORM=xcb"
+# Corrected: QT_QPA_PLATFORM is a separate variable, NOT part of PATH
+export QT_QPA_PLATFORM=xcb
+
+# Clean up PATH (Keep all your paths, just remove the variable assignment at the end)
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux-x86_64/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/zig-x86_64:$PYENV_ROOT/bin:$PATH"
 
 # ------ Plugins Block ----------
 
@@ -61,6 +64,8 @@ alias gs='git status'
 alias gc='git commit -am'
 alias pull='git pull'
 alias push='git push'
+alias solaris='ssh root@192.168.1.109'
+alias servarr='ssh dru@192.168.1.10'
 
 # ---- LSD ----
 alias ls='lsd'

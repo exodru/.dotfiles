@@ -1,13 +1,10 @@
-return {
-	"L3MON4D3/LuaSnip",
-	version = "v2.*",
-	config = function()
-		local ls = require("luasnip")
+local luasnip = require("luasnip")
 
-		-- tex buffers can see latex snippets
-		ls.filetype_extend("tex", { "latex" })
-		ls.filetype_extend("plaintex", { "latex" })
+luasnip.config.set_config({
+	history = true, -- lets u jump back into snippets even if you typed outside them
+	updateevents = "TextChanged,TextChangedI", -- dynamic update as you type inside nodes
+})
 
-		require("snippets.tex")
-	end,
-}
+require("luasnip.loaders.from_lua").lazy_load({
+	paths = { vim.fn.stdpath("config") .. "/lua/snippets" },
+})

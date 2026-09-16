@@ -1,3 +1,8 @@
+vim.pack.add({
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/nvim-lualine/lualine.nvim',
+})
+
 local mode_map = {
   ["n"] = "NOR",
   ["no"] = "O·P",
@@ -40,23 +45,23 @@ local function modes()
   return mode_map[vim.api.nvim_get_mode().mode] or "__"
 end
 
--- Xcode Monochrome Palette
+-- moonfly palette (by bluz71)
 local colors = {
   bg      = "NONE",     -- Transparent background
-  base_bg = "#101112",  -- Deep dark (for text on colored blocks)
-  fg      = "#D8DEE9",  -- Main text
-  muted   = "#4C566A",  -- Gray/Muted
-  cyan    = "#6BDFFF",  -- Xcode Cyan (Normal)
-  green   = "#A3D38C",  -- Xcode Green (Insert)
-  purple  = "#D5B4E2",  -- Xcode Purple (Visual)
-  red     = "#FF8170",  -- Xcode Red (Replace)
-  orange  = "#DAB275",  -- Xcode Gold (Command)
-  blue    = "#78C2B3",  -- Xcode Blue/Teal
+  base_bg = "#080808",  -- Dark Moonfly base (for block text)
+  fg      = "#b2b2b2",  -- Moonfly foreground text
+  muted   = "#4e4e4e",  -- Moonfly grey
+  blue    = "#80a0ff",  -- Moonfly Blue (Normal)
+  green   = "#8cc85f",  -- Moonfly Green (Insert)
+  purple  = "#cf87e8",  -- Moonfly Purple (Visual)
+  red     = "#ff5454",  -- Moonfly Red (Replace)
+  orange  = "#de935f",  -- Moonfly Orange (Command)
+  emerald = "#36c692",  -- Moonfly Emerald/Teal
 }
 
 local custom_theme = {
   normal = {
-    a = { fg = colors.base_bg, bg = colors.cyan, gui = "bold" },
+    a = { fg = colors.base_bg, bg = colors.blue, gui = "bold" },
     b = { fg = colors.fg, bg = colors.bg },
     c = { fg = colors.muted, bg = colors.bg },
   },
@@ -99,90 +104,104 @@ local function make_tabline_transparent()
   vim.api.nvim_set_hl(0, "TabLineSel", { bg = "NONE", ctermbg = "NONE" })
 end
 
-return {
-  "nvim-lualine/lualine.nvim",
-  dependencies = "nvim-tree/nvim-web-devicons",
-  config = function()
-    require("lualine").setup({
-      options = {
-        theme = custom_theme,
-        component_separators = "|",
-        section_separators = { left = "", right = "" },
-        disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
-        globalstatus = false,
+require("lualine").setup({
+  options = {
+    theme = custom_theme,
+    component_separators = "|",
+    section_separators = { left = "", right = "" },
+    disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
+    globalstatus = false,
+  },
+  tabline = {
+    lualine_c = {
+      {
+        "buffers",
+        show_filename_only = true,
+        show_modified_status = true,
+        buffers_color = {
+          active = { fg = colors.base_bg, bg = colors.blue, gui = "bold" },
+          inactive = { fg = colors.muted, bg = "NONE" },
+        },
+        symbols = { modified = " ●", directory = "" },
+        separator = { right = "" },
+        right_padding = 2
       },
-      tabline = {
-        lualine_c = {
-          {
-            "buffers",
-            show_filename_only = true,
-            show_modified_status = true,
-            buffers_color = {
-              active = { fg = colors.base_bg, bg = colors.cyan, gui = "bold" },
-              inactive = { fg = colors.muted, bg = "NONE" },
-            },
-            symbols = { modified = " ●", directory = "" },
-            separator = { right = "" },
-            right_padding = 2
-          },
-        },
-      },
-      sections = {
-        lualine_a = {
-          { modes, color = { gui = "bold" }, separator = { right = "" }, right_padding = 2 },
-        },
-        lualine_b = {
-          {
-            "diagnostics",
-            sources = { "nvim_diagnostic" },
-            symbols = { error = " ", warn = " ", info = " " },
-            diagnostics_color = {
-              color_error = { fg = colors.red, bg = colors.bg },
-              color_warn  = { fg = colors.orange, bg = colors.bg },
-              color_info  = { fg = colors.cyan, bg = colors.bg },
-            },
-          },
-          {
-            "filename",
-            path = 1,
-            color = { fg = colors.fg, bg = colors.bg, gui = "bold" },
-            cond = conditions.not_empty,
-          },
-          {
-            "branch",
-            color = { fg = colors.purple, bg = colors.bg, gui = "bold" },
-          },
-        },
-        lualine_c = {},
-        lualine_x = {
-          {
-            "diff",
-            symbols = { added = " ", modified = "󰝤 ", removed = " " },
-            diff_color = {
-              added    = { fg = colors.green, bg = colors.bg },
-              modified = { fg = colors.orange, bg = colors.bg },
-              removed  = { fg = colors.red, bg = colors.bg },
-            },
-          },
-        },
-        lualine_y = {
-          { "filetype", color = { gui = "bold", fg = colors.blue, bg = colors.bg } },
-          { "progress", color = { gui = "bold", fg = colors.cyan, bg = colors.bg } },
-        },
-        lualine_z = {
-          {
-            "location",
-            separator = { left = "" },
-            color = { fg = colors.base_bg, bg = colors.cyan, gui = "bold" },
-          },
+    },
+  },
+  sections = {
+    lualine_a = {
+      { modes, color = { gui = "bold" }, separator = { right = "" }, right_padding = 2 },
+    },
+    lualine_b = {
+      {
+        "diagnostics",
+        sources = { "nvim_diagnostic" },
+        symbols = { error = " ", warn = " ", info = " " },
+        diagnostics_color = {
+          color_error = { fg = colors.red, bg = colors.bg },
+          color_warn  = { fg = colors.orange, bg = colors.bg },
+          color_info  = { fg = colors.blue, bg = colors.bg },
         },
       },
-    })
+      {
+        "filename",
+        path = 1,
+        color = { fg = colors.fg, bg = colors.bg, gui = "bold" },
+        cond = conditions.not_empty,
+      },
+      {
+        "branch",
+        color = { fg = colors.purple, bg = colors.bg, gui = "bold" },
+      },
+    },
+    lualine_c = {},
+    lualine_x = {
+      {
+        "diff",
+        symbols = { added = " ", modified = "󰝤 ", removed = " " },
+        diff_color = {
+          added    = { fg = colors.green, bg = colors.bg },
+          modified = { fg = colors.orange, bg = colors.bg },
+          removed  = { fg = colors.red, bg = colors.bg },
+        },
+      },
+    },
+    lualine_y = {
+      { "filetype", color = { gui = "bold", fg = colors.emerald, bg = colors.bg } },
+      { "progress", color = { gui = "bold", fg = colors.blue, bg = colors.bg } },
+    },
+    lualine_z = {
+      {
+        "location",
+        separator = { left = "" },
+        color = { fg = colors.base_bg, bg = colors.blue, gui = "bold" },
+      },
+    },
+  },
+})
 
+-- handle layout-specific highlighting settings immediately
+make_tabline_transparent()
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = make_tabline_transparent,
+})
+
+-- force nvim statusline highlight groups to be transparent
+local function make_statusline_transparent()
+  vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE", ctermbg = "NONE" })
+  vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE", ctermbg = "NONE" })
+end
+
+-- Run it immediately on load
+make_statusline_transparent()
+
+-- Make sure it persists when you reload or change color schemes
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = function()
     make_tabline_transparent()
-    vim.api.nvim_create_autocmd("ColorScheme", {
-      pattern = "*",
-      callback = make_tabline_transparent,
-    })
+    make_statusline_transparent()
   end,
-}
+})
