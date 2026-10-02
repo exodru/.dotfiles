@@ -1,7 +1,10 @@
 ### Variables
 set $mod Mod4
-set $term ghostty
-set $menu wofi --show drun
+set $term kitty
+# set $menu wofi --show drun
+set $menu XDG_DATA_DIRS=/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:/usr/local/share:/usr/share wofi --show drun
+
+
 
 # Xcode Monochrome Palette
 set $bg_dark    #101112
@@ -22,7 +25,7 @@ font pango:JetBrainsMono Nerd Font 10
 
 ### Output & Input
 # output * bg $bg_dark solid_color
-exec_always swaybg -i ~/Pictures/walls/obscure.png &
+exec_always swaybg -i ~/Pictures/walls/dragonmancer-vayne.jpg &
 
 # Secondary monitor (Left)
 output HDMI-A-1 {
@@ -52,13 +55,14 @@ input "type:touchpad" {
 ### Window Style & Colors
 default_border pixel 1
 default_floating_border normal
-smart_borders on
-smart_gaps on
+smart_borders off
+smart_gaps off
 gaps inner 4
-gaps outer 0
+gaps outer 4
 
 # class                 border      backgr.     text        indicator   child_border
-client.focused          $xc_cyan    $bg_dark    $fg_bright  $xc_cyan    $xc_cyan
+# client.focused          $xc_cyan    $bg_dark    $fg_bright  $xc_cyan    $xc_cyan // cyan border accents
+client.focused          $xc_purple  $bg_dark    $fg_bright  $xc_purple  $xc_purple
 client.focused_inactive $bg_dark    $bg_dark    $muted      $bg_dark    $bg_dark
 client.unfocused        $bg_dark    $bg_dark    $muted      $bg_dark    $bg_dark
 client.urgent           $xc_red     $xc_red     $bg_dark    $xc_red     $xc_red
@@ -114,7 +118,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 ### Utilities
+# tells systemd how to display windows and handle screen sharing
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+# tells systemd how to display windows and handle screen sharing
+exec dbus-update-activation-environment --systemd XDG_DATA_DIRS=/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:/usr/local/share:/usr/share
 bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
@@ -123,7 +130,7 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 10%+
 
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
 bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
-bindsym $mod+Shift+s exec systemctl suspend
+bindsym --locked $mod+Shift+s exec systemctl suspend
 bindsym $mod+Ctrl+l exec swaylock -f -c $bg_dark
 bindsym $mod+m input "type:touchpad" events toggle enabled disabled
 
@@ -146,7 +153,7 @@ bar {
 }
 
 ### Autostart
-exec dunst
+exec mako
 # exec /usr/libexec/lxqt-policykit-agent
 exec_always nm-applet --indicator
 exec sway-audio-idle-inhibit

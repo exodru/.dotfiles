@@ -1,6 +1,6 @@
 [window]
 padding = { x = 12, y = 12 }
-opacity = 0.95
+opacity = 0.9
 dimensions = { columns = 140, lines = 40 }
 
 [colors.primary]
@@ -29,7 +29,6 @@ args = ["-l"]
 [scrolling]
 # no of lines kept in scrollback history
 history = 10000
-
 # no of lines scrolled per mouse wheel scroll movement
 multiplier = 3
 
@@ -40,3 +39,16 @@ style = { shape = "Block", blinking = "On" }
 [selection]
 # automatically save highlighted terminal selections to system clipboard
 save_to_clipboard = true
+
+[[keyboard.bindings]]
+key = "Left" # left arrow
+# key = "H" # H-key
+mods = "Control"
+chars = "\u001bb" # Jump word left
+
+[[keyboard.bindings]]
+key = "Right" # right arrow
+# key = "L" # L-key
+mods = "Control"
+chars = "\u001bf" # Jump word right
+

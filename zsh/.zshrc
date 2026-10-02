@@ -11,31 +11,6 @@ export QT_QPA_PLATFORM=xcb
 # Clean up PATH (Keep all your paths, just remove the variable assignment at the end)
 export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux-x86_64/bin:$HOME/go/bin:/usr/local/go/bin:$HOME/zig-x86_64:$PYENV_ROOT/bin:$PATH"
 
-# ------ Plugins Block ----------
-
-# 1. Autosuggestions
-if [ -f ~/.zsh/zsh-autosuggestions.zsh ]; then
-    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-    # Behavior setup
-    ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8" 
-    bindkey '^[[C' forward-char  # Right Arrow to accept
-    bindkey '^ ' autosuggest-accept # Ctrl + Space to accept
-    bindkey '^E' autosuggest-accept # Ctrl + E to accept
-fi
-
-# 2. Autocomplete (The dropdown menu)
-# NOTE: If your ghost text flickers or feels laggy, comment this block out.
-if [ -f ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]; then
-    source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-fi
-
-
-# 3. Syntax Highlighting (ALWAYS LAST IN PLUGINS)
-if [ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]; then
-    source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
-fi
-
 # ------ Aliases & Functions ----------
 alias xc='xclip -selection clipboard'
 alias nv='nvim'
@@ -49,10 +24,11 @@ alias dots='cd ~/.dotfiles'
 alias gd='go doc --src '
 alias py='python3'
 alias venv='source .venv/bin/activate'
-alias et="emacs -nw"
+alias note="cd ~/md-notes/ && nvim ."
 
 
 # ---- Various -----
+alias pj="cd ~/Projects"
 alias ..="cd .."
 alias ...="cd ../.."
 alias l='ls -A'
@@ -107,10 +83,27 @@ eval "$(pyenv init - zsh)"
 eval "$(zoxide init zsh)"
 eval "$(oh-my-posh init zsh --config ~/.config/posh/0xdru.omp.json)"
 FPATH="$HOME/.docker/completions:$FPATH"
-autoload -Uz compinit
-compinit
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/dru/.lmstudio/bin"
 # End of LM Studio CLI section
+
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
+# ------ Plugins Block ----------
+# 1. Autosuggestions
+if [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh ]; then
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+    # Behavior setup
+    ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8" 
+    bindkey '^[[C' forward-char  # Right Arrow to accept
+    bindkey '^ ' autosuggest-accept # Ctrl + Space to accept
+    bindkey '^E' autosuggest-accept # Ctrl + E to accept
+fi
+
+# 2. Syntax Highlighting (ALWAYS LAST IN PLUGINS)
+if [ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]; then
+    source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+fi
 

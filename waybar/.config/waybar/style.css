@@ -1,62 +1,79 @@
 * {
-    font-family: "JetBrainsMono Nerd Font", monospace;
-    font-size: 14px;
-    font-weight: 400;
-    border: none;
-    border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
 }
 
 window#waybar {
-    background-color: #101112; /* nord0 */
-    color: #eceff4;            /* nord6 */
+  background-color: #101011;
+  color: #9da5b4;
 }
 
-#tray {
-    margin-right: 10px; 
-}
-
+/* Subtle, borderless workspaces */
 #workspaces button {
-    padding: 0 12px;
-    color: #606062;            /* nord3 */
-    border: 1px solid #222223;
-    background: transparent;
+  padding: 0 8px;
+  color: #4b5263;
+  background: transparent;
+  transition: color 0.2s ease;
 }
 
-#workspaces button.focused {
-    color: #ffffff;            /* nord9 */
-    background: transparent;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.7);
+#workspaces button:hover {
+  color: #abb2bf;
+  background: transparent;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+  color: #ffffff;
+  background: transparent;
 }
 
 #workspaces button.urgent {
-    color: #bf616a;            /* nord11 */
+  color: #ff615c;
 }
 
-/* Base padding for all modules */
-#clock, #cpu, #memory, #battery, #pulseaudio, #network, #power-profiles-daemon, #bluetooth, #tray {
-    padding: 0 5px;
-    font-weight: 400;
+/* Universal module spacing */
+#clock,
+#cpu,
+#memory,
+#battery,
+#pulseaudio,
+#network,
+#power-profiles-daemon,
+#bluetooth,
+#language,
+#tray {
+  padding: 0 8px;
+  color: #abb2bf;
 }
 
-/* --- Nord Color Assignments --- */
-/* Xcode Dark Palette */
-#clock { color: #ffffff; }             /* Main Text */
-#cpu { color: #5fb6f0; }                                 /* Xcode Blue (Methods) */
-#memory { color: #dcb1ff; }                              /* Xcode Purple (Types) */
-#network { color: #f27893; }                             /* Xcode Pink (Attributes) */
-#bluetooth { color: #5fb6f0; }                           /* Xcode Blue */
-#power-profiles-daemon { color: #76c07a; }               /* Xcode Green (Strings) */
+/* Clock stands out clean and neutral */
+#clock {
+  color: #ffffff;
+  font-weight: 500;
+}
 
-/* Battery Colors */
-#battery { color: #76c07a; }                             /* Green */
-#battery.warning { color: #f4c750; }                      /* Xcode Gold */
-#battery.critical { color: #ff615c; }                     /* Xcode Red */
-
-/* Audio Colors */
-#pulseaudio { color: #f4c750; }                          /* Xcode Gold */
-#pulseaudio.muted { color: #7a818e; }                    /* Xcode Gray (Comments) */
-
+/* Language indicator stays subtle */
 #language {
-    color: #f27893;                                      /* Bright Xcode Blue */
-    font-weight: bold;
+  color: #abb2bf;
+}
+
+/* State-based color accents only when relevant */
+#battery.warning {
+  color: #f4c750;
+}
+
+#battery.critical {
+  color: #ff615c;
+}
+
+#pulseaudio.muted {
+  color: #4b5263;
+}
+
+#tray {
+  margin-right: 6px;
 }
